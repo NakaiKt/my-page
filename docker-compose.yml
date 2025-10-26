@@ -10,12 +10,12 @@ services:
       - .:/app
       # node_modulesはコンテナ内のものを使用（ローカルのnode_modulesで上書きしない）
       - /app/node_modules
-      # Next.jsのキャッシュもコンテナ内で管理
-      - /app/.next
     environment:
       # ファイル監視のポーリングを有効化（Docker環境で必要）
       - WATCHPACK_POLLING=true
       - CHOKIDAR_USEPOLLING=true
-    command: sh -c "npm install && npm run dev"
+      # Node.jsの環境設定
+      - NODE_ENV=development
+    command: sh -c "npm install && npm run dev -- --hostname 0.0.0.0"
     stdin_open: true
     tty: true

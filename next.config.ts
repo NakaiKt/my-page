@@ -4,8 +4,13 @@ const nextConfig: NextConfig = {
   /* config options here */
 
   // Docker環境でのホットリロード設定（Turbopack用）
-  // Turbopackを明示的に有効化し、環境変数でポーリングを設定
-  turbopack: {},
+  experimental: {
+    // Turbopackでのファイル監視を改善
+    turbo: {
+      // ルートディレクトリを明示的に指定
+      root: process.cwd(),
+    },
+  },
 };
 
 export default nextConfig;
