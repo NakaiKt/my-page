@@ -1,0 +1,319 @@
+---
+alwaysApply: true
+---
+
+# コンポーネント作成ガイドライン
+
+Reactコンポーネントを作成する際のベストプラクティス。
+
+## コンポーネント設計の原則
+
+### 1. 単一責任の原則
+
+各コンポーネントは1つの責務のみを持つ。
+
+```typescript
+// ❌ 避ける：複数の責務を持つコンポーネント
+function ProjectSection() {
+  // プロジェクトデータ取得
+  // フィルタリング
+  // ソート
+  // 表示
+  // ...
+}
+
+// ✅ 推奨：責務を分割
+function ProjectList({ projects }: { projects: Project[] }) {
+  return projects.map(project => (
+    <ProjectCard key={project.id} project={project} />
+  ));
+}
+
+function ProjectCard({ project }: { project: Project }) {
+  // 1つのプロジェクトカードの表示のみ
+}
+```
+
+### 2. 適切な粒度
+
+- 小さすぎ→コンポーネント数が増えすぎて管理が大変
+- 大きすぎ→再利用性が低く、テストが困難
+
+**目安：** 1コンポーネント100行以内が理想（超える場合は分割を検討）
+
+## コンポーネントの種類
+
+### Server Component（デフォルト）
+
+```typescript
+// app/some-page/page.tsx
+// 'use client' 不要
+import { PROJECTS } from '@/lib/constants/projects';
+
+export default function SomePage() {
+  return (
+    <div>
+      {PROJECTS.map(project => (
+        <ProjectCard key={project.id} project={project} />
+      ))}
+    </div>
+  );
+}
+```
+
+**使用場面：**
+
+- データフェッチ（将来的にAPIから取得する場合）
+- 静的コンテンツの表示
+- SEOが重要なコンテンツ
+
+### Client Component
+
+```typescript
+'use client';
+
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+
+export default function ProjectFilter() {
+  const [filter, setFilter] = useState<string>("all");
+
+  return (
+    <Button onClick={() => setFilter("design")}>
+      Filter
+    </Button>
+  );
+}
+```
+
+**使用場面：**
+
+- `useState`, `useEffect`などのフックを使用
+- ブラウザAPIを使用（`window`, `document`）
+- イベントハンドラー（`onClick`, `onChange`）
+- インタラクティブな機能
+
+## Props設計
+
+### 基本パターン
+
+```typescript
+// project-card.model.ts
+export interface ProjectCardProps {
+  project: Project;
+  variant?: "default" | "compact";
+  onSelect?: (id: string) => void;
+}
+
+// project-card.tsx
+import { ProjectCardProps } from "./project-card.model";
+
+export default function ProjectCard({
+  project,
+  variant = "default",
+  onSelect,
+}: ProjectCardProps) {
+  // ...
+}
+```
+
+### Childrenを受け取る場合
+
+```typescript
+import { ReactNode } from 'react';
+
+interface CardProps {
+  title: string;
+  children: ReactNode;
+}
+
+export default function Card({ title, children }: CardProps) {
+  return (
+    <div>
+      <h3>{title}</h3>
+      <div>{children}</div>
+    </div>
+  );
+}
+```
+
+### 条件付きProps
+
+```typescript
+// Discriminated Union を使用
+type ButtonProps =
+  | { variant: "link"; href: string; }
+  | { variant: "button"; onClick: () => void; };
+
+export default function CustomButton(props: ButtonProps) {
+  if (props.variant === "link") {
+    return <a href={props.href}>Link</a>;
+  }
+  return <button onClick={props.onClick}>Button</button>;
+}
+```
+
+## スタイリング
+
+### Tailwind + cn ヘルパー
+
+```typescript
+import { cn } from '@/lib/utils';
+
+interface CardProps {
+  className?: string;
+  variant?: "default" | "highlighted";
+}
+
+export default function Card({ className, variant = "default" }: CardProps) {
+  return (
+    <div className={cn(
+      // ベーススタイル
+      "rounded-lg border p-4",
+      // variant によるスタイル変更
+      variant === "highlighted" && "border-primary bg-primary/5",
+      // 外部から渡されたクラス
+      className
+    )}>
+      {/* ... */}
+    </div>
+  );
+}
+```
+
+### データ属性の活用
+
+```typescript
+// Tailwindの`group`と`data-[state]`を活用
+<div className="group" data-state={isActive ? "active" : "inactive"}>
+  <div className="group-data-[state=active]:text-primary">
+    Active Content
+  </div>
+</div>
+```
+
+## イベントハンドリング
+
+### コールバック関数のネーミング
+
+```typescript
+// ✅ 推奨：on{動詞}形式
+interface ProjectCardProps {
+  onSelect?: (id: string) => void;
+  onDelete?: (id: string) => void;
+  onEdit?: (id: string) => void;
+}
+
+// ❌ 避ける：handle{動詞}（これはコンポーネント内部で使用）
+interface ProjectCardProps {
+  handleSelect?: () => void; // ×
+}
+```
+
+### イベントハンドラーの実装
+
+```typescript
+'use client';
+
+import { MouseEvent } from 'react';
+
+export default function ProjectCard({ project, onSelect }: ProjectCardProps) {
+  // 内部ハンドラーは handle{動詞} 形式
+  const handleClick = (e: MouseEvent<HTMLDivElement>) => {
+    console.log("Clicked:", project.id);
+    onSelect?.(project.id);
+  };
+
+  return (
+    <div onClick={handleClick}>
+      {/* ... */}
+    </div>
+  );
+}
+```
+
+## レンダリング最適化
+
+### 条件付きレンダリング
+
+```typescript
+// ✅ 推奨：早期リターン
+export default function ProjectCard({ project }: ProjectCardProps) {
+  if (!project) {
+    return null;
+  }
+
+  return <div>{/* ... */}</div>;
+}
+
+// ✅ 推奨：&&演算子（falsy値に注意）
+{projects.length > 0 && (
+  <ProjectList projects={projects} />
+)}
+
+// ❌ 避ける：三項演算子でnull（可読性が低い）
+{projects.length > 0 ? <ProjectList /> : null}
+```
+
+### リスト表示
+
+```typescript
+// ✅ 必ずkeyを指定
+{projects.map(project => (
+  <ProjectCard key={project.id} project={project} />
+))}
+
+// ❌ indexをkeyにしない（並び替えがある場合）
+{projects.map((project, index) => (
+  <ProjectCard key={index} project={project} />
+))}
+```
+
+## コンポーネント export
+
+### デフォルトエクスポート
+
+```typescript
+// ✅ ページ・レイアウト・主要コンポーネント
+export default function ProjectCard() {
+  // ...
+}
+```
+
+### 名前付きエクスポート
+
+```typescript
+// ✅ ユーティリティコンポーネント・複数エクスポート
+export function ProjectCardSkeleton() {
+  // ...
+}
+
+export function ProjectCardError() {
+  // ...
+}
+```
+
+## アクセシビリティ
+
+```typescript
+import Image from 'next/image';
+
+// ✅ セマンティックHTML を使用
+<button onClick={handleClick}>Click me</button>
+<nav><ul><li><a href="/about">About</a></li></ul></nav>
+
+// ❌ divをボタン代わりに使わない
+<div onClick={handleClick}>Click me</div>
+
+// ✅ ARIA属性を適切に使用
+<button
+  onClick={handleToggle}
+  aria-expanded={isOpen}
+  aria-controls="menu"
+>
+  Menu
+</button>
+
+// ✅ 画像にalt属性
+<Image src={project.imageUrl} alt={project.title} />
+```

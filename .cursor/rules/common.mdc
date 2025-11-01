@@ -1,3 +1,246 @@
 ---
 alwaysApply: true
 ---
+
+# コーディング規約
+
+このプロジェクトのコーディングスタイルとベストプラクティス。
+
+## TypeScript
+
+### 基本ルール
+
+- `any`型は原則禁止。型が不明な場合は`unknown`を使用
+- 関数の戻り値の型は明示的に記述（型推論に頼りすぎない）
+- `interface`と`type`の使い分け：
+  - オブジェクトの形状定義 → `interface`
+  - Union型、Intersection型、その他複雑な型 → `type`
+
+### 命名規則
+
+```typescript
+// コンポーネント：PascalCase
+export function ExperienceCard() {}
+
+// 定数：UPPER_SNAKE_CASE（lib/constants/内）
+export const MAX_PROJECT_COUNT = 10;
+export const PROFILE_DATA = { ... };
+
+// 関数、変数：camelCase
+const userName = "Taro";
+function calculateAge() {}
+
+// 型：PascalCase
+type ProjectData = { ... };
+interface UserProfile { ... }
+```
+
+### ファイルサフィックス
+
+```typescript
+// 型定義：*.model.ts
+// user.model.ts
+export interface User {
+  id: string;
+  name: string;
+}
+
+export type UserRole = "admin" | "user";
+
+// モックデータ：*.mock.ts
+// user.mock.ts
+export const MOCK_USER: User = {
+  id: "1",
+  name: "Taro",
+};
+```
+
+### インポート
+
+インポートの順序はLintで自動整理されるため、手動での調整は不要。
+
+```typescript
+// React系は名前付きインポート
+import { useState, useEffect, ReactNode, MouseEvent } from 'react';
+
+// ❌ 避ける
+import React from 'react';
+const node: React.ReactNode = ...;
+```
+
+## React / Next.js
+
+### コンポーネント設計
+
+- Server Componentをデフォルトとする（Next.js App Router）
+- Client Componentは必要な場合のみ`'use client'`を明示
+- 1ファイル1コンポーネントが原則（小さなヘルパーコンポーネントは例外）
+
+```typescript
+// ❌ 避ける：複数のエクスポートコンポーネント
+export function Card() {}
+export function CardHeader() {}
+
+// ✅ 推奨：単一のデフォルトエクスポート
+export default function ProjectCard() {}
+```
+
+### Props設計
+
+```typescript
+// ✅ 推奨：*.model.tsで型定義
+// project-card.model.ts
+export interface ProjectCardProps {
+  title: string;
+  description: string;
+  tags: string[];
+  imageUrl?: string;
+}
+
+// project-card.tsx
+import { ProjectCardProps } from "./project-card.model";
+
+export default function ProjectCard({
+  title,
+  description,
+  tags,
+  imageUrl,
+}: ProjectCardProps) {
+  // ...
+}
+
+// ❌ 避ける：インライン型定義
+export default function ProjectCard({
+  title,
+  description,
+}: {
+  title: string;
+  description: string;
+}) {}
+```
+
+### フック使用のルール
+
+```typescript
+// ✅ カスタムフックは`use`で始める
+function useProjectFilter(projects: Project[]) {
+  // ...
+}
+
+// ✅ useEffectの依存配列は必ず明示
+useEffect(() => {
+  fetchData();
+}, [id]);
+```
+
+### 動的インポート
+
+このプロジェクトでは動的インポートは使用しない方針。
+
+```typescript
+// ❌ 使用しない
+const Component = dynamic(() => import("./component"));
+```
+
+## Tailwind CSS
+
+### クラス名の順序
+
+Prettier pluginによる自動整形に任せる。手動で調整する必要はない。
+
+### 長いクラス名の処理
+
+```typescript
+// ✅ 推奨：cnヘルパーを使用
+import { cn } from '@/lib/utils';
+
+<div className={cn(
+  "flex items-center justify-between",
+  "p-4 rounded-lg border border-border",
+  "bg-card text-card-foreground",
+  "hover:bg-accent transition-colors",
+  isActive && "bg-primary text-primary-foreground"
+)} />
+```
+
+### カスタムカラーの使用
+
+```typescript
+// ✅ Tailwindの変数を使用
+className = "bg-primary text-primary-foreground";
+
+// ❌ 固定カラーは避ける（デザインシステムに従う）
+className = "bg-amber-500 text-gray-900";
+```
+
+## ファイル・フォルダ構成
+
+### ファイル名規則
+
+- コンポーネント：`kebab-case.tsx`（例：`project-card.tsx`）
+- ユーティリティ：`kebab-case.ts`（例：`date-formatter.ts`）
+- 型定義：`kebab-case.model.ts`（例：`project.model.ts`）
+- モックデータ：`kebab-case.mock.ts`（例：`project.mock.ts`）
+- 定数：`kebab-case.ts`（例：`profile-data.ts`）
+
+### エクスポート方法
+
+```typescript
+// ✅ 名前付きエクスポート（型定義、ユーティリティ、定数）
+export const SITE_TITLE = "Portfolio";
+export function formatDate(date: Date) {}
+export interface User { ... }
+
+// ✅ デフォルトエクスポート（ページ・レイアウト・主要コンポーネント）
+export default function HomePage() {}
+```
+
+## コメント
+
+### 必要なコメント
+
+```typescript
+// ✅ 複雑なビジネスロジックの説明
+// 職務経歴の期間が重複する場合、最新のものを優先表示
+const filteredProjects = projects.filter(/* ... */);
+
+// ✅ TODOコメント（将来的な改善点）
+// TODO: APIから取得する場合はこの部分を変更
+const profileData = PROFILE_DATA;
+
+// ✅ 外部依存の説明
+// react-pdfの制約により、フォントは事前登録が必要
+Font.register({ ... });
+```
+
+### 不要なコメント
+
+```typescript
+// ❌ 自明なコメント
+const name = "Taro"; // 名前を設定
+
+// ❌ コードの説明（コード自体を読みやすくする）
+// ユーザー名を取得してステートに保存
+const userName = user.name;
+setUserName(userName);
+```
+
+## パフォーマンス考慮
+
+### 画像最適化
+
+```typescript
+// ✅ Next.jsのImageコンポーネントを使用
+import Image from 'next/image';
+
+<Image
+  src="/profile.jpg"
+  alt="Profile"
+  width={200}
+  height={200}
+  priority // LCPに影響する画像にはpriorityを指定
+/>
+
+// ❌ 通常のimgタグは避ける
+<img src="/profile.jpg" alt="Profile" />
+```

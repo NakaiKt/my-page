@@ -1,0 +1,211 @@
+---
+alwaysApply: true
+---
+
+# shadcn/ui 使用ガイドライン
+
+このプロジェクトでshadcn/uiを使用する際のルールとベストプラクティス。
+
+## shadcn/ui とは
+
+shadcn/uiは**コンポーネントライブラリではなく、コードをコピーして使うシステム**です。
+
+- NPMパッケージとしてインストールするのではなく、CLIでコードをプロジェクトに追加
+- 追加されたコンポーネントは`components/ui/`に配置され、**完全にカスタマイズ可能**
+- Radix UI + Tailwind CSS で構築
+- アクセシビリティ対応済み
+
+## コンポーネントの追加方法
+
+```bash
+# Dockerコンテナ内で実行
+docker exec mypage-frontend npx shadcn@latest add button
+
+# 複数を一度に追加
+docker exec mypage-frontend npx shadcn@latest add button card dialog
+```
+
+**追加後のファイル：**
+
+- `components/ui/button.tsx` が生成される
+- このファイルは**直接編集してOK**
+- Git管理対象なので、変更履歴も追跡される
+
+## コンポーネントの使用
+
+### 基本的な使い方
+
+```typescript
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
+
+export default function MyComponent() {
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>タイトル</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <p>コンテンツ</p>
+        <Button>クリック</Button>
+      </CardContent>
+    </Card>
+  );
+}
+```
+
+### variant の使い方
+
+shadcn/uiのコンポーネントは`variant`でスタイルを変更できます。
+
+```typescript
+// Button の variant
+<Button variant="default">Default</Button>
+<Button variant="destructive">Delete</Button>
+<Button variant="outline">Outline</Button>
+<Button variant="secondary">Secondary</Button>
+<Button variant="ghost">Ghost</Button>
+<Button variant="link">Link</Button>
+
+// size も指定可能
+<Button size="sm">Small</Button>
+<Button size="default">Default</Button>
+<Button size="lg">Large</Button>
+```
+
+## カスタマイズ方法
+
+### 1. Tailwindクラスで上書き
+
+```typescript
+import { Button } from '@/components/ui/button';
+
+// ✅ className で上書き可能
+<Button className="bg-amber-500 hover:bg-amber-600">
+  カスタムボタン
+</Button>
+```
+
+### 2. コンポーネントファイルを直接編集
+
+`components/ui/button.tsx`を直接編集してvariantを追加・変更できます。
+
+```typescript
+// components/ui/button.tsx
+
+const buttonVariants = cva("inline-flex items-center justify-center...", {
+  variants: {
+    variant: {
+      default: "bg-primary text-primary-foreground...",
+      destructive: "bg-destructive text-destructive-foreground...",
+      // ✅ カスタムvariantを追加
+      accent: "bg-amber-500 text-white hover:bg-amber-600",
+    },
+    // ...
+  },
+});
+```
+
+使用例：
+
+```typescript
+<Button variant="accent">Accent Button</Button>
+```
+
+### 3. ラッパーコンポーネントを作成
+
+プロジェクト固有のコンポーネントが必要な場合は、ラッパーを作成。
+
+```typescript
+// components/primary-button.tsx
+import { Button } from '@/components/ui/button';
+import { ReactNode } from 'react';
+
+interface PrimaryButtonProps {
+  children: ReactNode;
+  onClick?: () => void;
+}
+
+export default function PrimaryButton({
+  children,
+  onClick
+}: PrimaryButtonProps) {
+  return (
+    <Button
+      className="bg-amber-500 hover:bg-amber-600"
+      onClick={onClick}
+    >
+      {children}
+    </Button>
+  );
+}
+```
+
+## アクセシビリティ
+
+shadcn/uiのコンポーネントはRadix UIをベースにしており、アクセシビリティ対応済みです。
+
+- **キーボード操作対応**
+- **スクリーンリーダー対応**
+- **ARIA属性の適切な使用**
+
+カスタマイズ時もこれらを壊さないように注意：
+
+```typescript
+import { ReactNode } from 'react';
+
+// ✅ DialogTrigger の asChild を使用
+<DialogTrigger asChild>
+  <Button>Open</Button>
+</DialogTrigger>
+
+// ❌ 直接onClick を使うとアクセシビリティが損なわれる
+<Button onClick={() => setOpen(true)}>Open</Button>
+```
+
+## テーマカスタマイズ
+
+`app/globals.css`でテーマをカスタマイズできます。
+
+```css
+@layer base {
+  :root {
+    /* このプロジェクトのカラースキーム */
+    --primary: 38 92% 50%; /* amber-500 */
+    --primary-foreground: 60 9% 98%;
+
+    --accent: 48 96% 53%; /* amber-400 */
+    --accent-foreground: 26 83% 14%;
+
+    /* その他の変数... */
+  }
+}
+```
+
+変更後、すべてのshadcn/uiコンポーネントに反映されます。
+
+## 注意事項
+
+### 1. コンポーネントの削除は慎重に
+
+一度追加したコンポーネントを削除する場合、他で使用していないか確認。
+
+### 2. バージョン管理
+
+shadcn/uiのコンポーネントはプロジェクト内のコードなので、バージョン管理はGitで行う。
+
+### 3. コンポーネントの更新
+
+shadcn/uiのコンポーネントが更新された場合、手動で反映する必要がある。
+（通常はマイナーな改善なので、必須ではない）
+
+### 4. 依存関係
+
+shadcn/uiのコンポーネントは以下に依存：
+
+- Radix UI
+- Tailwind CSS
+- class-variance-authority (cva)
+- clsx / tailwind-merge
+
+これらのパッケージバージョンに注意。
