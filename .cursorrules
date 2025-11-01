@@ -1,0 +1,377 @@
+# Portfolio Project - Cursor AI ルール
+
+このファイルは、Cursor AIがコーディングをサポートする際の基本ルールを定義しています。
+
+---
+
+## 📋 チャットコマンド
+
+チャットの先頭に以下のキーワードがある場合、特定のモードで動作します。
+
+### 🔍 調査: [調査内容]
+
+**使用例**: `調査: ビルドエラーの原因を特定してほしい`
+
+**動作**:
+- ファイルの変更は一切行わない（読み取り専用モード）
+- 指定された課題やバグの調査を実施
+- 関連するファイル、コード、設定を確認
+- 問題の原因、影響範囲、推奨される解決策をレポート
+- 必要に応じてコードスニペットや参考リンクを提示
+
+**調査対象の例**:
+- エラーやバグの原因特定
+- パフォーマンスのボトルネック調査
+- 依存関係の確認
+- コードの動作理解
+- ベストプラクティスとの比較
+
+### 📝 レビュー: [レビュー対象]
+
+**使用例**: `レビュー: 最新のコミット`
+
+**動作**:
+- 指定されたコード、コミット、PRをレビュー
+- コード品質、可読性、保守性を評価
+- 潜在的なバグやパフォーマンスの問題を指摘
+- ベストプラクティスとの乖離を確認
+- 改善提案を具体的に提示（ただし自動修正はしない）
+
+**レビュー観点**:
+- TypeScript/React のベストプラクティス
+- パフォーマンス（不要な再レンダリング、メモ化の機会など）
+- アクセシビリティ（a11y）
+- コードの一貫性（プロジェクトの規約との整合性）
+- セキュリティ上の懸念
+
+---
+
+## 🎯 プロジェクト概要
+
+- **目的**: 個人ポートフォリオサイト
+- **開発体制**: 一人開発（個人プロジェクト）
+- **アーキテクチャ**: フロントエンドのみ（API連携なし）
+  - 将来的にAPI連携の可能性あり
+  - メタデータ（名前、経歴など）は `src/lib/constants/` に定数として定義
+
+---
+
+## 📁 ディレクトリ構成
+
+```
+my-page/
+├── src/
+│   ├── app/                    # Next.js App Router
+│   │   ├── layout.tsx          # ルートレイアウト
+│   │   ├── page.tsx            # ホームページ
+│   │   └── globals.css         # グローバルスタイル
+│   ├── components/             # Reactコンポーネント
+│   │   ├── ui/                 # shadcn/ui コンポーネント
+│   │   └── [feature]/          # 機能ごとのコンポーネント
+│   ├── styles/                 # スタイル定義
+│   │   ├── theme.ts            # カラー・デザイントークン
+│   │   └── fonts.ts            # フォント設定
+│   ├── lib/                    # ユーティリティ・ヘルパー
+│   │   ├── utils.ts            # 汎用ユーティリティ
+│   │   └── constants/          # 定数定義（メタデータなど）
+│   └── hooks/                  # カスタムReact Hooks（必要に応じて）
+├── prototype/                  # プロトタイプファイル（参考用）
+├── public/                     # 静的アセット
+└── .cursor/                    # Cursor設定
+```
+
+### ディレクトリルール
+
+- **コンポーネント**: 機能ごとにディレクトリを分ける（例: `components/hero/`, `components/skills/`）
+- **定数**: `src/lib/constants/` にメタデータや設定値を定義
+- **ユーティリティ**: 汎用的な関数は `src/lib/utils.ts` に追加
+- **スタイル**: デザイントークンは `src/styles/theme.ts` で一元管理
+
+---
+
+## 🎨 コード規約
+
+### TypeScript
+
+- **厳格な型付け**: `any` の使用は避け、適切な型定義を行う
+- **明示的な戻り値の型**: 関数の戻り値は可能な限り型を明示
+- **型推論の活用**: 自明な場合は型推論を活用（冗長な型注釈は避ける）
+- **インポートパス**: `@/` エイリアスを使用（例: `import { Button } from '@/components/ui/button'`）
+
+```typescript
+// ✅ Good
+export function calculateTotal(items: CartItem[]): number {
+  return items.reduce((sum, item) => sum + item.price, 0);
+}
+
+// ❌ Bad
+export function calculateTotal(items: any) {
+  return items.reduce((sum: any, item: any) => sum + item.price, 0);
+}
+```
+
+### React / Next.js
+
+- **関数コンポーネント**: 常に関数コンポーネントを使用
+- **Server Component 優先**: 可能な限りServer Componentを使用（'use client' は必要な場合のみ）
+- **propsの型定義**: インターフェースで明示的に定義
+
+```tsx
+// ✅ Good
+interface HeroProps {
+  title: string;
+  subtitle?: string;
+}
+
+export function Hero({ title, subtitle }: HeroProps) {
+  return (
+    <div>
+      <h1>{title}</h1>
+      {subtitle && <p>{subtitle}</p>}
+    </div>
+  );
+}
+```
+
+- **条件付きレンダリング**: `&&` または三項演算子を使用
+- **イベントハンドラ**: `handle` プレフィックスを使用（例: `handleClick`, `handleSubmit`）
+
+### スタイリング
+
+- **Tailwind CSS**: プライマリなスタイリング方法
+- **デザイントークン**: `src/styles/theme.ts` から定数をインポート
+- **一貫性**: プロトタイプと同じクラス名・パターンを使用
+
+```tsx
+// ✅ Good
+import { gradients, textGradients } from '@/styles/theme';
+
+<div className={`bg-gradient-to-r ${gradients.primary} rounded-xl p-6`}>
+  <h2 className={textGradients.primary}>Title</h2>
+</div>
+
+// ❌ Bad - ハードコードされた色
+<div className="bg-gradient-to-r from-yellow-500 to-red-500">
+  <h2>Title</h2>
+</div>
+```
+
+### 命名規則
+
+- **コンポーネント**: PascalCase（例: `HeroSection`, `SkillCard`）
+- **ファイル名**: コンポーネントはPascalCase、それ以外はkebab-case
+  - コンポーネント: `HeroSection.tsx`
+  - ユーティリティ: `date-formatter.ts`
+  - フック: `use-scroll-position.ts`
+- **関数**: camelCase（例: `fetchUserData`, `formatDate`）
+- **定数**: UPPER_SNAKE_CASE（例: `MAX_ITEMS`, `API_ENDPOINT`）
+- **変数**: camelCase
+
+### コメント
+
+- **複雑なロジック**: 理由や意図を説明するコメントを追加
+- **TODO**: `// TODO: 説明` の形式で記載
+- **JSDoc**: 公開APIや複雑な関数には追加を検討
+
+```typescript
+/**
+ * ユーザーのスキルレベルに応じて色を返す
+ * @param level - スキルレベル（1-5）
+ * @returns Tailwind CSSのカラークラス
+ */
+export function getSkillColor(level: number): string {
+  if (level >= 4) return 'text-green-500';
+  if (level >= 2) return 'text-amber-500';
+  return 'text-gray-500';
+}
+```
+
+---
+
+## 🎨 デザインシステム
+
+### カラーテーマ
+
+- **メインカラー**: Amber & Orange のグラデーション
+- **セカンダリカラー**: Blue-Cyan（技術系）, Purple-Pink（デザイン系）, Green-Emerald（成長系）
+- **参照方法**: `src/styles/theme.ts` から定数をインポート
+
+### フォント
+
+- **本文**: Geist Sans
+- **コード**: Geist Mono
+- **参照方法**: `src/styles/fonts.ts` から定数をインポート
+
+### よく使うパターン
+
+詳細は `THEME_GUIDE.md` を参照してください。
+
+---
+
+## 🔧 開発ルール
+
+### ファイル作成
+
+- **コンポーネント**: 機能ごとにディレクトリを作成（例: `src/components/hero/HeroSection.tsx`）
+- **単一責任**: 1ファイル1コンポーネントを基本とする
+- **index.ts**: ディレクトリ内に複数ファイルがある場合、エクスポートをまとめる
+
+### 定数管理
+
+- **メタデータ**: 名前、経歴、スキルなどは `src/lib/constants/` に定義
+- **環境変数**: 将来的にAPIを使う場合は `.env.local` に定義
+
+```typescript
+// src/lib/constants/profile.ts
+export const PROFILE = {
+  name: '山田 太郎',
+  title: 'フロントエンドエンジニア',
+  bio: '...',
+} as const;
+```
+
+### インポート順序
+
+1. React / Next.js
+2. 外部ライブラリ
+3. 内部モジュール（`@/` エイリアス）
+4. 相対パス
+5. 型定義
+6. スタイル
+
+```typescript
+// 1. React / Next.js
+import { useState } from 'react';
+import Link from 'next/link';
+
+// 2. 外部ライブラリ
+import { Sparkles } from 'lucide-react';
+
+// 3. 内部モジュール
+import { Button } from '@/components/ui/button';
+import { gradients } from '@/styles/theme';
+
+// 4. 相対パス
+import { HeroCard } from './HeroCard';
+
+// 5. 型定義
+import type { Profile } from '@/types';
+```
+
+---
+
+## ✅ コードレビューのルール
+
+コードレビューは以下の観点で実施してください（チャットコマンド「レビュー:」使用時も同様）。
+
+### 1. コード品質
+
+- [ ] TypeScriptの型が適切に定義されているか
+- [ ] `any` や型アサーションの不適切な使用がないか
+- [ ] エラーハンドリングが適切か
+- [ ] 未使用のインポートや変数がないか
+
+### 2. React / Next.js
+
+- [ ] Server ComponentとClient Componentが適切に分離されているか
+- [ ] 不要な `'use client'` の使用がないか
+- [ ] コンポーネントの責務が明確か（単一責任の原則）
+- [ ] propsの型が適切に定義されているか
+
+### 3. パフォーマンス
+
+- [ ] 不要な再レンダリングが発生していないか
+- [ ] メモ化（`useMemo`, `useCallback`）が適切に使われているか
+- [ ] 画像の最適化（Next.js `Image`コンポーネント使用）
+
+### 4. スタイリング
+
+- [ ] デザイントークン（`theme.ts`）を使用しているか
+- [ ] ハードコードされた色やスタイルがないか
+- [ ] レスポンシブデザインが考慮されているか
+
+### 5. アクセシビリティ
+
+- [ ] セマンティックなHTML要素を使用しているか
+- [ ] 適切なARIA属性が設定されているか
+- [ ] キーボード操作が可能か
+- [ ] 十分なコントラスト比があるか
+
+### 6. 一貫性
+
+- [ ] プロジェクトの命名規則に従っているか
+- [ ] ディレクトリ構成のルールに従っているか
+- [ ] コードスタイルが統一されているか
+
+### 7. セキュリティ
+
+- [ ] ユーザー入力の適切なサニタイズ
+- [ ] 機密情報がハードコードされていないか
+
+---
+
+## 💡 ベストプラクティス
+
+### パフォーマンス
+
+- 画像は Next.js の `Image` コンポーネントを使用
+- 動的インポートで遅延ロード（必要に応じて）
+- Server Component を優先し、クライアント処理を最小限に
+
+### アクセシビリティ
+
+- セマンティックHTML（`<header>`, `<nav>`, `<main>`, `<footer>` など）
+- 画像には `alt` 属性を必須で追加
+- ボタンやリンクには適切なラベル
+
+### 保守性
+
+- コンポーネントは小さく、再利用可能に
+- 複雑なロジックはカスタムフックに抽出
+- マジックナンバーは定数として定義
+
+---
+
+## 🚀 開発フロー
+
+1. **新機能開発**
+   - プロトタイプを参考にデザインを確認
+   - `src/components/` に機能ごとのディレクトリを作成
+   - デザイントークンを使用してスタイリング
+   - 型定義を適切に行う
+
+2. **定数追加**
+   - メタデータは `src/lib/constants/` に追加
+   - 型定義も一緒に行う
+
+3. **レビュー**
+   - コミット前にチャットコマンド「レビュー:」で自己レビュー
+   - 上記のレビュー観点をチェック
+
+---
+
+## 📚 参考資料
+
+- [THEME_GUIDE.md](./THEME_GUIDE.md) - デザインシステムの詳細
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Tailwind CSS v4](https://tailwindcss.com/docs)
+- [TypeScript Handbook](https://www.typescriptlang.org/docs/)
+
+---
+
+## ⚙️ その他
+
+### トーン
+
+- 個人開発なので、過度にかしこまったコメントは不要
+- コードレビューは建設的で、具体的な改善案を提示
+- わかりやすく、フレンドリーなトーンで
+
+### 将来的な拡張
+
+- API連携が必要になった際は、`src/lib/api/` にAPI関連のコードを配置
+- 状態管理が複雑になった場合は、Context API または Zustand を検討
+
+---
+
+最終更新: 2025-11-01
