@@ -1,0 +1,223 @@
+---
+alwaysApply: true
+---
+
+# ディレクトリ構成
+
+プロジェクトのディレクトリ構造とファイル配置のルール。
+
+## 基本構造
+
+```
+my-portfolio/
+├── app/                    # Next.js App Router
+│   ├── layout.tsx         # ルートレイアウト
+│   ├── page.tsx           # トップページ
+│   ├── globals.css        # グローバルスタイル
+│   └── [各ページ]/        # 個別ページ（ユーザーが自由に定義）
+│
+├── components/
+│   ├── ui/                # shadcn/uiコンポーネント（CLI生成）
+│   └── [その他]/          # プロジェクト固有コンポーネント（ユーザーが自由に定義）
+│
+├── lib/
+│   ├── utils.ts           # ユーティリティ関数（cnなど）
+│   ├── constants/         # 定数定義
+│   └── helpers/           # ヘルパー関数
+│
+├── types/                 # 廃止：*.model.ts を使用
+│
+├── public/               # 静的ファイル
+│   └── images/
+│
+├── .cursor/              # Cursorルール
+│   ├── rules/
+│   └── commands/
+│
+└── [設定ファイル...]
+```
+
+## ディレクトリごとの役割
+
+### `/app` - ページとルーティング
+
+- Next.js 15 App Routerのルーティング
+- 各ページファイルは基本的にServer Component
+- Client Componentが必要な場合のみ`'use client'`を使用
+
+**ルール：**
+
+- ページコンポーネントは軽量に保つ（ロジックはcomponentsへ）
+- レイアウトは`layout.tsx`で定義
+- メタデータは`metadata`オブジェクトで設定
+
+```typescript
+// app/some-page/page.tsx
+import { Metadata } from 'next';
+import SomeComponent from '@/components/some-component';
+
+export const metadata: Metadata = {
+  title: 'Page Title',
+  description: 'Description',
+};
+
+export default function SomePage() {
+  return <SomeComponent />;
+}
+```
+
+### `/components` - UIコンポーネント
+
+#### `/components/ui` - shadcn/ui
+
+- **自動生成されるコンポーネント群**
+- `docker exec mypage-frontend npx shadcn@latest add button`などで追加
+- **直接編集してカスタマイズ可能**
+- 削除しない（必要に応じてカスタマイズ）
+
+#### その他のディレクトリ
+
+ユーザーが自由に定義。プロジェクトの成長に応じて柔軟に構成。
+
+### `/lib` - ロジックとデータ
+
+#### `/lib/constants` - 定数定義
+
+**重要：** 将来的にAPIから取得する可能性があるデータもここに定義
+
+```typescript
+// lib/constants/profile.ts
+export const PROFILE = {
+  name: "山田太郎",
+  title: "エンジニア・UXデザイナー",
+  vision: "「勉強が嫌い」という子供を０にする",
+  // ...
+} as const;
+```
+
+**ルール：**
+
+- 定数は`as const`でimmutableにする
+- エクスポートは名前付き
+- 複数の定数がある場合はオブジェクトにまとめる
+
+#### `/lib/utils.ts` - ユーティリティ
+
+- `cn` - Tailwindクラス名を結合（shadcn/uiのデフォルト）
+- その他共通ユーティリティ
+
+#### `/lib/helpers` - ヘルパー関数
+
+- 日付フォーマット
+- 文字列操作
+- データ変換など
+
+```typescript
+// lib/helpers/date-formatter.ts
+export function formatPeriod(start: string, end: string | null): string {
+  const startDate = new Date(start);
+  const endDate = end ? new Date(end) : null;
+
+  return endDate
+    ? `${format(startDate)} 〜 ${format(endDate)}`
+    : `${format(startDate)} 〜 現在`;
+}
+```
+
+### 型定義の配置
+
+**`/types`ディレクトリは使用しない。**
+代わりに`*.model.ts`ファイルを使用し、関連するコンポーネントやロジックの近くに配置。
+
+```typescript
+// components/project-card.model.ts
+export interface ProjectCardProps {
+  title: string;
+  description: string;
+}
+
+// lib/constants/project.model.ts
+export interface Project {
+  id: string;
+  title: string;
+  period: {
+    start: string;
+    end: string | null;
+  };
+}
+```
+
+### モックデータの配置
+
+`*.mock.ts`ファイルを使用し、対応する定数やモデルファイルの近くに配置。
+
+```typescript
+// lib/constants/project.mock.ts
+import { Project } from "./project.model";
+
+export const MOCK_PROJECTS: Project[] = [
+  {
+    id: "1",
+    title: "プロジェクトA",
+    period: { start: "2023-04", end: null },
+  },
+];
+```
+
+### `/public` - 静的ファイル
+
+- 画像、フォント、その他静的アセット
+- **プロジェクト写真はS3を使用（URLで参照）**
+- プロフィール画像などサイト固有の画像のみpublicに配置
+
+## ファイル追加時のガイドライン
+
+### 新しいコンポーネントを追加する場合
+
+1. まず配置場所を決定：
+   - shadcn/uiで追加できるか？ → `docker exec mypage-frontend npx shadcn@latest add {component}`
+   - プロジェクト固有か？ → `/components`以下の適切な場所
+
+2. ファイル名は`kebab-case.tsx`
+3. 型が必要なら同じディレクトリに`*.model.ts`を作成
+4. 定数が必要なら`/lib/constants`に定義
+
+### 新しいページを追加する場合
+
+1. `/app/{page-name}/page.tsx`を作成
+2. メタデータを設定
+3. 必要に応じて`layout.tsx`も作成
+
+## インポートパスのエイリアス
+
+```typescript
+// tsconfig.jsonで設定済み
+import { Button } from "@/components/ui/button";
+import { PROFILE } from "@/lib/constants/profile";
+import { Project } from "@/lib/constants/project.model";
+```
+
+**ルール：**
+
+- 常に`@/`エイリアスを使用（相対パスは避ける）
+- インポート時に自動補完を活用
+
+## 開発環境
+
+### Dockerコンテナ内でのコマンド実行
+
+npmコマンドはDockerコンテナ内で実行：
+
+```bash
+# shadcn/uiコンポーネントの追加
+docker exec mypage-frontend npx shadcn@latest add button
+
+# その他のnpmコマンド
+docker exec mypage-frontend npm install
+docker exec mypage-frontend npm run dev
+```
+
+### Git管理
+
+- Gitはローカル（Windows）で管理
+- コンテナ内ではGitコマンドを実行しない

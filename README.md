@@ -7,8 +7,8 @@
 ### Docker使用
 
 ```bash
-docker build -t syncspire-frontend .
-docker run -it -p 3000:3000 -v ${PWD}:/app --name syncspire-frontend --rm syncspire-frontend
+docker build -t mypage-frontend .
+docker run -it -p 3000:3000 -v ${PWD}:/app --name mypage-frontend --rm mypage-frontend
 ```
 
 ### 環境に入ったあと
