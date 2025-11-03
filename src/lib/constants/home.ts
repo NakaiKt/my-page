@@ -1,7 +1,6 @@
-import { BookOpen, Code, FileText, Github, Linkedin, Palette, Target, Zap } from "lucide-react";
+import { BookOpen, FileText, Github, Linkedin } from "lucide-react";
 
 import type {
-  AboutFeature,
   FavoriteHighlight,
   HomeSectionId,
   SkillBadge,
@@ -16,37 +15,6 @@ export const HOME_SECTION_IDS: readonly HomeSectionId[] = [
   "skills",
   "social",
 ] 
-
-export const HOME_ABOUT_FEATURES: readonly AboutFeature[] = [
-  {
-    icon: Code,
-    title: "エンジニアリング",
-    description:
-      "技術的な実装とユーザー体験の両方を考慮した開発を行います。なぜその機能が必要なのか、常に問い続けています。",
-    transitionDelayClass: "delay-0",
-  },
-  {
-    icon: Palette,
-    title: "UXデザイン",
-    description:
-      "過度な装飾を避け、シンプルで使いやすいデザインを心がけています。必要最小限で迷わせない設計を実践します。",
-    transitionDelayClass: "delay-100",
-  },
-  {
-    icon: Target,
-    title: "チームワーク",
-    description:
-      "エンジニア、デザイナー、プロダクトマネージャーと協働し、より良いプロダクトを作ることにやりがいを感じています。",
-    transitionDelayClass: "delay-200",
-  },
-  {
-    icon: Zap,
-    title: "価値創出",
-    description:
-      "常にユーザーファーストの姿勢を忘れず、価値あるプロダクトを届けることに情熱を注いでいます。",
-    transitionDelayClass: "delay-300",
-  },
-] as const;
 
 export const HOME_FAVORITES: readonly FavoriteHighlight[] = [
   {

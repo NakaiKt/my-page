@@ -25,15 +25,13 @@ export default function HeroSection() {
         </div>
         <h1
           className={cn(
-            "text-5xl md:text-6xl font-bold mb-3 bg-clip-text text-transparent",
+            "mb-3 bg-clip-text text-transparent",
             "bg-gradient-to-r from-amber-600 via-orange-400 to-amber-600",
           )}
         >
           {USER_META.name}
         </h1>
-        <p className="text-xl md:text-2xl text-gray-700 mb-4 font-medium">
-          {USER_META.job}
-        </p>
+        <h5 className="text-gray-700 mb-4">{USER_META.job}</h5>
         <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/50 backdrop-blur-sm rounded-full border border-amber-200 text-gray-600">
           <Zap className="w-4 h-4 text-amber-500" />
           <span className="text-sm">@ {USER_META.company}</span>
