@@ -4,7 +4,7 @@ import { USER_META } from "@/lib/constants/userMeta";
 
 export default function SiteFooter() {
   return (
-    <footer className="border-t border-gray-200 mt-20 bg-orange-50">
+    <footer className="border-t border-gray-200 bg-white">
       <div className="container mx-auto px-4 py-12">
         <div className="text-center">
           <div className="inline-flex items-center gap-3 mb-6">
@@ -16,7 +16,7 @@ export default function SiteFooter() {
           </p>
           <a
             href={`mailto:${USER_META.email}`}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold rounded-xl transition duration-300 hover:scale-105 hover:shadow-2xl group"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-amber-500 text-white font-semibold rounded-xl transition duration-300 hover:scale-105 hover:shadow-2xl group"
           >
             <Mail className="w-5 h-5 group-hover:rotate-12 transition-transform" />
             <span>{USER_META.email}</span>
