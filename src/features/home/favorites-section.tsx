@@ -1,4 +1,4 @@
-import { HOME_FAVORITES } from "@/lib/constants/home";
+import { USER_INFO } from "@/lib/constants/userInfo";
 
 import SectionTitle from "@/components/SectionTitle";
 import {
@@ -20,7 +20,7 @@ export default function FavoritesSection({
         description="すきなもの・大切にしていること"
       />
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {HOME_FAVORITES.map((item) => (
+        {USER_INFO.FAVORITES.map((item) => (
           <Card
             key={item.title}
             className={`h-full transition-all duration-1000 ${item.transitionDelayClass} ${
