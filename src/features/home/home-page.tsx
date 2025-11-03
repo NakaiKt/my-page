@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 
+import { USER_INFO } from "@/lib/constants/userInfo";
 import AboutSection from "./about-section";
 import FavoritesSection from "./favorites-section";
 import HeroSection from "./hero-section";
@@ -64,11 +65,16 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
-      <VisionSection isVisible={isSectionVisible("vision")} />
-      <AboutSection isVisible={isSectionVisible("about")} />
-      <FavoritesSection isVisible={isSectionVisible("favorites")} />
-      <SkillsSection isVisible={isSectionVisible("skills")} />
-      <SocialSection isVisible={isSectionVisible("social")} />
+      <div className="py-20 max-w-4xl mx-auto gap-20 flex flex-col">
+        <VisionSection
+          isVisible={isSectionVisible("vision")}
+          vision={USER_INFO.VISION}
+        />
+        <AboutSection isVisible={isSectionVisible("about")} />
+        <FavoritesSection isVisible={isSectionVisible("favorites")} />
+        <SkillsSection isVisible={isSectionVisible("skills")} />
+        <SocialSection isVisible={isSectionVisible("social")} />
+      </div>
     </>
   );
 }
