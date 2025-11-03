@@ -9,7 +9,7 @@ export default function SiteFooter() {
         <div className="text-center">
           <div className="inline-flex items-center gap-3 mb-6">
             <div className="w-1 h-8 bg-amber-500 rounded-full" />
-            <h3 className="text-2xl font-bold text-gray-900">Contact</h3>
+            <h3 className="text-gray-900">Contact</h3>
           </div>
           <p className="text-gray-700 mb-6 text-lg">
             お仕事のご相談はこちらからお気軽にどうぞ

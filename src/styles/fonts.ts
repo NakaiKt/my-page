@@ -45,12 +45,12 @@ export const fontClasses = {
 
   // 見出しスタイル
   headings: {
-    h1: "text-5xl md:text-6xl font-bold",
-    h2: "text-4xl font-bold",
-    h3: "text-3xl font-bold",
-    h4: "text-2xl font-bold",
-    h5: "text-xl font-bold",
-    h6: "text-lg font-bold",
+    h1: "heading-h1",
+    h2: "heading-h2",
+    h3: "heading-h3",
+    h4: "heading-h4",
+    h5: "heading-h5",
+    h6: "heading-h6",
   },
 
   // 本文スタイル
