@@ -137,6 +137,30 @@
   body {
     @apply text-foreground;
   }
+  h1,
+  .heading-h1 {
+    @apply text-5xl font-bold text-foreground md:text-6xl;
+  }
+  h2,
+  .heading-h2 {
+    @apply text-4xl font-bold text-foreground;
+  }
+  h3,
+  .heading-h3 {
+    @apply text-3xl font-bold text-foreground;
+  }
+  h4,
+  .heading-h4 {
+    @apply text-2xl font-bold text-foreground;
+  }
+  h5,
+  .heading-h5 {
+    @apply text-xl font-bold text-foreground;
+  }
+  h6,
+  .heading-h6 {
+    @apply text-lg font-bold text-foreground;
+  }
 }
 
 @keyframes blob {
