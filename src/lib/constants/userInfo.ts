@@ -2,7 +2,7 @@ import type { VisionContent, AboutFeature } from "../models/userInfo.model";
 import { Code, Palette, Target, Zap } from "lucide-react";
 
 const VISION: VisionContent = {
-    headline: "「勉強が嫌い」という\n子供を０にする",
+    headline: "「勉強が嫌い」という子供を０にする",
     description:
       "子供たちが学ぶことの楽しさを発見し、自ら学び続けられる環境を作ることを目指しています。\nテクノロジーとデザインの力で、教育体験をより良いものにしていきたいと考えています。",
   }
