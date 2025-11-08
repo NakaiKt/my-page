@@ -11,6 +11,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 
 import type { Experience } from "@/lib/models/experience.model";
+import SectionTemplate from "./SectionTemplate";
 
 type Props = {
   readonly experience: Experience;
@@ -78,63 +79,30 @@ export default function ExperienceCard({
 
           <AccordionContent className="px-6 pb-6">
             <div className="space-y-6 pt-4">
-              {/* Background */}
-              <div>
-                <div className="flex items-center gap-2 mb-3">
-                  <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
-                    <TrendingUp className="w-4 h-4 text-white" />
-                  </div>
-                  <h4 className="text-lg font-bold text-gray-900">
-                    背景・課題
-                  </h4>
-                </div>
-                <p className="text-gray-700 leading-relaxed pl-10">
-                  {experience.details.background}
-                </p>
-              </div>
-
-              {/* Solution */}
-              <div>
-                <div className="flex items-center gap-2 mb-3">
-                  <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
-                    <Code className="w-4 h-4 text-white" />
-                  </div>
-                  <h4 className="text-lg font-bold text-gray-900">
-                    解決策・アプローチ
-                  </h4>
-                </div>
-                <p className="text-gray-700 leading-relaxed pl-10">
-                  {experience.details.solution}
-                </p>
-              </div>
-
-              {/* Results */}
-              <div>
-                <div className="flex items-center gap-2 mb-3">
-                  <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center">
-                    <TrendingUp className="w-4 h-4 text-white" />
-                  </div>
-                  <h4 className="text-lg font-bold text-gray-900">成果</h4>
-                </div>
-                <p className="text-gray-700 leading-relaxed pl-10">
-                  {experience.details.results}
-                </p>
-              </div>
-
-              {/* Collaboration */}
-              <div>
-                <div className="flex items-center gap-2 mb-3">
-                  <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center">
-                    <Users className="w-4 h-4 text-white" />
-                  </div>
-                  <h4 className="text-lg font-bold text-gray-900">
-                    協働のエピソード
-                  </h4>
-                </div>
-                <p className="text-gray-700 leading-relaxed pl-10">
-                  {experience.details.collaboration}
-                </p>
-              </div>
+              <SectionTemplate
+                icon={TrendingUp}
+                title="背景・課題"
+                content={experience.details.background}
+                gradientClass="from-blue-500 to-cyan-500"
+              />
+              <SectionTemplate
+                icon={Code}
+                title="解決策・アプローチ"
+                content={experience.details.solution}
+                gradientClass="from-purple-500 to-pink-500"
+              />
+              <SectionTemplate
+                icon={TrendingUp}
+                title="成果"
+                content={experience.details.results}
+                gradientClass="from-green-500 to-emerald-500"
+              />
+              <SectionTemplate
+                icon={Users}
+                title="協働のエピソード"
+                content={experience.details.collaboration}
+                gradientClass="from-amber-500 to-orange-500"
+              />
             </div>
           </AccordionContent>
         </AccordionItem>
