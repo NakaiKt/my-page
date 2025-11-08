@@ -2,9 +2,9 @@ import type { VisionContent, AboutFeature, FavoriteHighlight, SkillBadge, Social
 import { Code, Palette, Target, Zap, Github, Linkedin, FileText, BookOpen } from "lucide-react";
 
 const VISION: VisionContent = {
-    headline: "「勉強が嫌い」という子供を０にする",
+    headline: "子どもたちが本質を理解する学びを通して\n自分の生きる理由を見つけられる社会をつくる",
     description:
-      "子供たちが学ぶことの楽しさを発見し、自ら学び続けられる環境を作ることを目指しています。\nテクノロジーとデザインの力で、教育体験をより良いものにしていきたいと考えています。",
+      "人が豊かに生きるには、自分の生きる理由を自認できていることが重要だ。\nそれは、自分がポジティブな感情を持って取り組めること（何が楽しいか、何を残せるか、何で貢献できるか）を、自分で見つけ、選択できる力を持つことで実現する。\nその力を育むのが、本質を理解する学びだ。",
   }
 
 const ABOUT_FEATURES: readonly AboutFeature[] = [
