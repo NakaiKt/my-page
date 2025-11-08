@@ -26,7 +26,7 @@ export default function VisionSection({ vision, isVisible }: Props) {
           <div className="relative">
             <div className="flex items-center gap-3 mb-8">
               <div className="w-1 h-12 bg-gradient-to-b from-amber-500 to-orange-500 rounded-full" />
-              <h2 className="text-white">Vision</h2>
+              <h2 className="text-white">願い</h2>
             </div>
             <p className="text-4xl md:text-5xl font-bold text-white mb-8 leading-tight whitespace-pre-line">
               {vision.headline}
