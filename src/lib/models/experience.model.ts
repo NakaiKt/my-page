@@ -7,6 +7,11 @@ export interface ExperienceDetails {
   collaboration: string;
 }
 
+export interface Company {
+  id: number;
+  name: string;
+}
+
 export interface Experience {
   id: number;
   title: string;
