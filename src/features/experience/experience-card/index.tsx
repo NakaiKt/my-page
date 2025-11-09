@@ -1,5 +1,5 @@
-import { Calendar, Briefcase, Code, TrendingUp, Users } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Briefcase, Calendar, Code, TrendingUp, Users } from "lucide-react";
 
 import {
   Accordion,
@@ -31,11 +31,14 @@ export default function ExperienceCard({
       className={cn(
         "transition-all duration-1000",
         transitionDelay,
-        isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-20",
+        isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-20"
       )}
     >
       <Accordion type="single" collapsible>
-        <AccordionItem value={`experience-${experience.id}`} className="border-0">
+        <AccordionItem
+          value={`experience-${experience.id}`}
+          className="border-0"
+        >
           <AccordionTrigger className="px-6 hover:no-underline hover:bg-gray-50/50 rounded-t-lg">
             <div className="flex items-start gap-4 w-full">
               <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-amber-500 to-orange-500 text-white shadow-lg flex-shrink-0">
@@ -45,7 +48,10 @@ export default function ExperienceCard({
                 <div className="flex items-center gap-2 mb-2">
                   <Calendar className="w-4 h-4 text-amber-500 flex-shrink-0" />
                   <span className="text-sm text-gray-600">
-                    {experience.period}
+                    {experience.start.year}年{experience.start.month}月 〜{" "}
+                    {experience.end
+                      ? `${experience.end.year}年${experience.end.month}月`
+                      : "現在"}
                   </span>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">

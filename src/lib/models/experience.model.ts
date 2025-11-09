@@ -10,7 +10,14 @@ export interface ExperienceDetails {
 export interface Experience {
   id: number;
   title: string;
-  period: string;
+  start: {
+    year: number;
+    month: number;
+  };
+  end: {
+    year: number;
+    month: number;
+  } | null;
   roles: string[];
   summary: string;
   icon: LucideIcon;

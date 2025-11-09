@@ -20,7 +20,7 @@ export default function ExperiencePage() {
           }
         });
       },
-      { threshold: 0.1 },
+      { threshold: 0.1 }
     );
 
     const section = document.querySelector('[data-animate="true"]');
@@ -35,7 +35,7 @@ export default function ExperiencePage() {
     <div className="py-20 max-w-4xl mx-auto">
       <section data-animate="true">
         <SectionTitle
-          title="Experience"
+          title="職務経歴"
           description="これまでに携わってきたプロジェクトと、そこで得た経験をご紹介します"
         />
         <div className="space-y-6">
@@ -44,7 +44,9 @@ export default function ExperiencePage() {
               key={experience.id}
               experience={experience}
               isVisible={isVisible}
-              transitionDelay={TRANSITION_DELAYS[index % TRANSITION_DELAYS.length]}
+              transitionDelay={
+                TRANSITION_DELAYS[index % TRANSITION_DELAYS.length]
+              }
             />
           ))}
         </div>

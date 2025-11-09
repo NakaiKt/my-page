@@ -1,11 +1,15 @@
-import { GraduationCap, Smartphone, Palette, Settings } from "lucide-react";
+import { GraduationCap, Palette, Settings, Smartphone } from "lucide-react";
 import type { Experience } from "../models/experience.model";
 
 export const EXPERIENCES: readonly Experience[] = [
   {
     id: 1,
     title: "教育プラットフォーム刷新プロジェクト",
-    period: "2024年4月 〜 現在",
+    start: {
+      year: 2024,
+      month: 4,
+    },
+    end: null,
     roles: ["UXデザイナー", "フロントエンドエンジニア"],
     summary:
       "既存の教育プラットフォームのUI/UX全面刷新。ユーザー調査から設計、実装まで一貫して担当。",
@@ -25,7 +29,14 @@ export const EXPERIENCES: readonly Experience[] = [
   {
     id: 2,
     title: "モバイルアプリ新機能開発",
-    period: "2023年10月 〜 2024年3月",
+    start: {
+      year: 2023,
+      month: 10,
+    },
+    end: {
+      year: 2024,
+      month: 3,
+    },
     roles: ["フロントエンドエンジニア"],
     summary:
       "学習進捗を可視化する新機能の開発。データビジュアライゼーションとアニメーションを駆使した直感的なUI。",
@@ -45,7 +56,14 @@ export const EXPERIENCES: readonly Experience[] = [
   {
     id: 3,
     title: "デザインシステム構築",
-    period: "2023年4月 〜 2023年9月",
+    start: {
+      year: 2023,
+      month: 4,
+    },
+    end: {
+      year: 2023,
+      month: 9,
+    },
     roles: ["UXデザイナー", "フロントエンドエンジニア"],
     summary:
       "プロダクト全体で使用するデザインシステムの構築。一貫性のあるUI/UXを実現し、開発効率を向上。",
@@ -65,7 +83,14 @@ export const EXPERIENCES: readonly Experience[] = [
   {
     id: 4,
     title: "管理画面リニューアル",
-    period: "2022年10月 〜 2023年3月",
+    start: {
+      year: 2022,
+      month: 10,
+    },
+    end: {
+      year: 2023,
+      month: 3,
+    },
     roles: ["フロントエンドエンジニア"],
     summary:
       "社内向け管理画面の全面リニューアル。レガシーコードのモダン化と、使いやすさの大幅改善。",
