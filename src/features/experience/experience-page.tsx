@@ -43,10 +43,10 @@ export default function ExperiencePage() {
           {EXPERIENCES.map((experience, index) => {
             const { experiences, ...company } = experience;
 
-            // startで降順ソート
+            // startで昇順ソート
             const sortedExperiences = experiences.sort((a, b) => {
               if (a.start.year === b.start.year) {
-                return a.start.month - b.start.month;
+                return b.start.month - a.start.month;
               }
               return b.start.year - a.start.year;
             });
@@ -58,19 +58,21 @@ export default function ExperiencePage() {
             const period = `${companyStart} 〜 ${companyEnd}`;
 
             return (
-              <>
+              <div key={company.id}>
                 <CompanyTitle companyName={company.name} period={period} />
-                {sortedExperiences.map((experience) => (
-                  <ExperienceCard
-                    key={experience.id}
-                    experience={experience}
-                    isVisible={isVisible}
-                    transitionDelay={
-                      TRANSITION_DELAYS[index % TRANSITION_DELAYS.length]
-                    }
-                  />
-                ))}
-              </>
+                <div className="flex flex-col gap-4">
+                  {sortedExperiences.map((experience) => (
+                    <ExperienceCard
+                      key={experience.id}
+                      experience={experience}
+                      isVisible={isVisible}
+                      transitionDelay={
+                        TRANSITION_DELAYS[index % TRANSITION_DELAYS.length]
+                      }
+                    />
+                  ))}
+                </div>
+              </div>
             );
           })}
         </div>
