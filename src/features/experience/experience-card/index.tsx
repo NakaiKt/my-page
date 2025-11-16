@@ -85,30 +85,38 @@ export default function ExperienceCard({
 
           <AccordionContent className="px-6 pb-6">
             <div className="space-y-6 pt-4">
-              <SectionTemplate
-                icon={TrendingUp}
-                title="背景・課題"
-                content={experience.details.background}
-                gradientClass="from-blue-500 to-cyan-500"
-              />
-              <SectionTemplate
-                icon={Code}
-                title="解決策・アプローチ"
-                content={experience.details.solution}
-                gradientClass="from-purple-500 to-pink-500"
-              />
-              <SectionTemplate
-                icon={TrendingUp}
-                title="成果"
-                content={experience.details.results}
-                gradientClass="from-green-500 to-emerald-500"
-              />
-              <SectionTemplate
-                icon={Users}
-                title="協働のエピソード"
-                content={experience.details.collaboration}
-                gradientClass="from-amber-500 to-orange-500"
-              />
+              {experience.details.background && (
+                <SectionTemplate
+                  icon={TrendingUp}
+                  title="背景・課題"
+                  content={experience.details.background}
+                  gradientClass="from-blue-500 to-cyan-500"
+                />
+              )}
+              {experience.details.solution && (
+                <SectionTemplate
+                  icon={Code}
+                  title="解決策・アプローチ"
+                  content={experience.details.solution}
+                  gradientClass="from-purple-500 to-pink-500"
+                />
+              )}
+              {experience.details.results && (
+                <SectionTemplate
+                  icon={TrendingUp}
+                  title="成果"
+                  content={experience.details.results}
+                  gradientClass="from-green-500 to-emerald-500"
+                />
+              )}
+              {experience.details.collaboration && (
+                <SectionTemplate
+                  icon={Users}
+                  title="協働のエピソード"
+                  content={experience.details.collaboration}
+                  gradientClass="from-amber-500 to-orange-500"
+                />
+              )}
             </div>
           </AccordionContent>
         </AccordionItem>

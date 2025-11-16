@@ -1,10 +1,10 @@
 import type { LucideIcon } from "lucide-react";
 
 export interface ExperienceDetails {
-  background: string;
-  solution: string;
-  results: string;
-  collaboration: string;
+  background?: string;
+  solution?: string;
+  results?: string;
+  collaboration?: string;
 }
 
 export interface Company {
