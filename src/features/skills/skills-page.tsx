@@ -5,12 +5,7 @@ import { Award, TrendingUp } from "lucide-react";
 
 import SectionTitle from "@/components/SectionTitle";
 import { Card } from "@/components/ui/card";
-import {
-  SKILL_CATEGORIES,
-  STRENGTHS,
-  CERTIFICATIONS,
-} from "@/lib/constants/skills";
-import StrengthCard from "./strength-card";
+import { SKILL_CATEGORIES, CERTIFICATIONS } from "@/lib/constants/skills";
 import SkillCategoryCard from "./skill-category-card";
 
 export default function SkillsPage() {
@@ -48,25 +43,6 @@ export default function SkillsPage() {
 
   return (
     <div className="py-20 max-w-6xl mx-auto space-y-20">
-      {/* Strengths */}
-      <section id="strengths" data-animate>
-        <SectionTitle title="Strengths" description="強み・特徴" />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {STRENGTHS.map((strength, index) => (
-            <div
-              key={strength.title}
-              className={`transition-all duration-1000 delay-${index * 100} ${
-                visibleSections.has("strengths")
-                  ? "opacity-100 translate-x-0"
-                  : "opacity-0 translate-x-20"
-              }`}
-            >
-              <StrengthCard strength={strength} />
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* Technical Skills */}
       <section id="technical-skills" data-animate>
         <SectionTitle title="Technical Skills" description="技術スキル" />

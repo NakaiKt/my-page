@@ -1,18 +1,5 @@
-import {
-  Code,
-  Layers,
-  Palette,
-  PencilRuler,
-  TrendingUp,
-  Users,
-  Wrench,
-  Zap,
-} from "lucide-react";
-import type {
-  Certification,
-  SkillCategory,
-  Strength,
-} from "../models/skills.model";
+import { Code, Palette, PencilRuler, Wrench } from "lucide-react";
+import type { Certification, SkillCategory } from "../models/skills.model";
 
 export const SKILL_CATEGORIES: readonly SkillCategory[] = [
   {
@@ -78,37 +65,6 @@ export const SKILL_CATEGORIES: readonly SkillCategory[] = [
       { name: "Cursor", years: 1, level: "beginner" },
       { name: "claude code", years: 1, level: "beginner" },
     ],
-  },
-];
-
-export const STRENGTHS: readonly Strength[] = [
-  {
-    icon: Layers,
-    title: "フルスタック開発",
-    description:
-      "フロントエンド（React/TypeScript）からバックエンド（Python/AWS）、UXデザイン（Figma/Miro）まで一貫した開発が可能です。Vue2からReactへの移行、API設計、インフラ構築など幅広い領域で実績があります。",
-    gradientClass: "from-blue-500 to-cyan-500",
-  },
-  {
-    icon: TrendingUp,
-    title: "パフォーマンス最適化",
-    description:
-      "コードの再設計やドキュメント整理、テストコードの追加など。リファクタリングとアーキテクチャ設計により、保守性と効率性を両立させる技術力があります。",
-    gradientClass: "from-green-500 to-emerald-500",
-  },
-  {
-    icon: Users,
-    title: "チームリーダーシップ",
-    description:
-      "認定スクラムマスターとしてアジャイル文化を推進。コードレビュー文化の導入、ツール導入の説明会主催など、チームの成長を促進する活動を実践しています。",
-    gradientClass: "from-purple-500 to-pink-500",
-  },
-  {
-    icon: Zap,
-    title: "ユーザー中心設計",
-    description:
-      "ペルソナ設計からユーザージャーニー作成、プロトタイピングまで実践。お客様ヒアリングを基に「繋ぐ」機能を0から設計するなど、ユーザー価値を重視した開発を行います。",
-    gradientClass: "from-amber-500 to-orange-500",
   },
 ];
 

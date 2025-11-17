@@ -29,31 +29,31 @@ const VISION: VisionContent = {
 
 const ABOUT_FEATURES: readonly AboutFeature[] = [
   {
-    icon: Target,
-    title: "チームワーク",
+    icon: Code,
+    title: "フルスタック開発",
     description:
-      "いい製品はいいチームから。一人ひとりのパフォーマンスを最大限に引き出せるチームに価値を感じています。",
+      "フロントエンド（React/TypeScript）からバックエンド（Python/AWS）、UXデザイン（Figma/Miro）まで一貫した開発が可能です。技術的な実装とユーザー体験の両方を考慮し、Vue2からReactへの移行やAPI設計など幅広い領域で実績があります。",
     transitionDelayClass: "delay-0",
   },
   {
-    icon: Palette,
-    title: "UXデザイン",
+    icon: Zap,
+    title: "パフォーマンス最適化",
     description:
-      "華美な装飾を避け、シンプルで使いやすいデザインを心がけています。必要最小限でユーザーの価値を最大化するデザインを目指します。",
+      "アルゴリズム検討により実行時間を1/2、解像度を10倍に改善した実績があります。リファクタリングとアーキテクチャ設計により、保守性と効率性を両立させることを重視しています。",
     transitionDelayClass: "delay-100",
   },
   {
-    icon: Code,
-    title: "エンジニアリング",
+    icon: Target,
+    title: "チームリーダーシップ",
     description:
-      "技術的な実装とユーザー体験の両方を考慮した開発を行います。なぜその機能が必要なのか、常に問い続けています。",
+      "認定スクラムマスターとしてアジャイル開発を推進。コードレビュー文化の導入やツール導入の説明会主催など、一人ひとりのパフォーマンスを最大限に引き出せるチーム作りに価値を感じています。",
     transitionDelayClass: "delay-200",
   },
   {
-    icon: Zap,
-    title: "価値創出",
+    icon: Palette,
+    title: "ユーザー中心設計",
     description:
-      "常にユーザーの側に立つ姿勢を忘れず、価値あるプロダクトを届けることに情熱を注いでいます。",
+      "ペルソナ設計からユーザージャーニー作成、プロトタイピングまで実践。お客様ヒアリングを基に0から機能設計を行うなど、華美な装飾を避けシンプルで使いやすいデザインでユーザー価値の最大化を目指します。",
     transitionDelayClass: "delay-300",
   },
 ];
