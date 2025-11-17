@@ -1,4 +1,14 @@
-import { GraduationCap, Palette, Smartphone } from "lucide-react";
+import {
+  GraduationCap,
+  Palette,
+  Smartphone,
+  Settings,
+  MessageSquare,
+  Code2,
+  Camera,
+  Shield,
+  Brain,
+} from "lucide-react";
 import type { Company, Experience } from "../models/experience.model";
 
 type ExperienceWithCompany = Company & {
@@ -176,6 +186,207 @@ export const EXPERIENCES: readonly ExperienceWithCompany[] = [
             "UIデザインをレビューするときはPMやデザイナー、社内の他のメンバーとの意見交換を積極的に行いました。\
             API設計段階では私がRestful APIの知見が浅かったところもあり、知見のある他のバックエンドメンバーに助けてもらいながら設計を進めていきました。\
             ツールの導入では「遣い方」の調査と説明会の主催を担当し、導入障壁をクリアするよう努めました。",
+        },
+      },
+      {
+        id: 6,
+        title: "AIプラットフォームのUI構築",
+        start: {
+          year: 2024,
+          month: 5,
+        },
+        end: {
+          year: 2024,
+          month: 6,
+        },
+        roles: ["フロントエンドエンジニア"],
+        summary:
+          "簡易実装を下地に、本格的な実装を担当。勉強しながらフロント実装を進め、自分なりの実装をブラッシュアップしていきました。",
+        icon: Settings,
+        tags: ["React", "TypeScript"],
+        details: {
+          solution:
+            "前回に引き続き、勉強しながらフロント実装を担当しました。\
+            勉強しながらということもあり、後々「ここの実装はこれを使えばよかったんだ」といったことが多くあり、\
+            そのたびにタスクに起こしては時間があるときに改善を加え、自分なりの実装をブラッシュアップしていきました。",
+        },
+      },
+      {
+        id: 7,
+        title: "AIチャットサービスの簡易UI構築",
+        start: {
+          year: 2024,
+          month: 4,
+        },
+        end: {
+          year: 2024,
+          month: 4,
+        },
+        roles: ["フロントエンドエンジニア"],
+        summary:
+          "チャットサービス、管理者ページ、データベース登録などのページのUIをデザイン、設計、作成しました。",
+        icon: MessageSquare,
+        tags: ["React", "TypeScript"],
+        details: {
+          background:
+            "初めてのReactフロントエンド開発であり、最初はほとんどの実装を私が担当することになっていたので、これまでの中でも特段苦労した開発となりました。",
+          solution:
+            "最初はVueの考えをベースにReactを書いていましたが、HTMLを主としたVueの考えとReactの考えが合わず、次第にReactはReact、VueはVueで考えるようになりました。\
+            今回は簡易的に作るということもあり、実装はシンプルで、初めてのReactプロジェクトとしてはいい経験になりました。",
+        },
+      },
+      {
+        id: 8,
+        title: "素材を感性評価するサービスのUI構築",
+        start: {
+          year: 2024,
+          month: 2,
+        },
+        end: {
+          year: 2024,
+          month: 3,
+        },
+        roles: ["フロントエンドエンジニア"],
+        summary:
+          "素材を感性評価する新しいサービスの中で、テキストや画像から感性情報をグラフ等で出力するUIの開発を行いました。",
+        icon: Palette,
+        tags: ["Vue.js", "JavaScript"],
+        details: {},
+      },
+      {
+        id: 9,
+        title: "コアAPIのリファクタリング",
+        start: {
+          year: 2024,
+          month: 1,
+        },
+        end: {
+          year: 2024,
+          month: 2,
+        },
+        roles: ["バックエンドエンジニア"],
+        summary:
+          "感性AIが提供するコアなAPIのひとつのリファクタリングを担当しました。",
+        icon: Code2,
+        tags: ["Python", "AWS", "CircleCI", "ドメイン駆動設計"],
+        details: {
+          background:
+            "長年にわたって技術要件や機能要件が肥大化し、複雑化、低効率化していたAPIを1から再設計する必要がありました。",
+          solution:
+            "可読性、高効率化、および改造のしやすさを重視し、明確な設計思想を示しながらドメイン駆動で設計しました。",
+        },
+      },
+    ],
+  },
+  {
+    id: 2,
+    name: "株式会社NID",
+    experiences: [
+      {
+        id: 10,
+        title: "ナレッジ検索用生成AIアシスタント",
+        start: {
+          year: 2023,
+          month: 4,
+        },
+        end: {
+          year: 2023,
+          month: 12,
+        },
+        roles: ["フルスタックエンジニア"],
+        summary:
+          "社内ドキュメントの検索、回答を行うAIアシスタントシステムの技術選定、サーバー及びフロント開発を担当。",
+        icon: Brain,
+        tags: [
+          "AWS Lambda",
+          "AWS Bedrock",
+          "Azure OpenAI",
+          "Vue.js",
+          "Python",
+          "AWS DynamoDB",
+          "AWS S3",
+          "RAG",
+        ],
+        details: {},
+      },
+      {
+        id: 11,
+        title: "混雑度検知システムの改修",
+        start: {
+          year: 2023,
+          month: 1,
+        },
+        end: {
+          year: 2023,
+          month: 6,
+        },
+        roles: ["バックエンドエンジニア", "インフラエンジニア"],
+        summary:
+          "カメラ画像から人数カウント、混雑度を判定するシステムの技術選定を行い、画像取得からデータベース書き込みまでのサーバーサイドを担当。",
+        icon: Camera,
+        tags: [
+          "AWS Lambda",
+          "AWS EC2",
+          "AWS S3",
+          "AWS SQS",
+          "AWS DynamoDB",
+          "AWS CloudFormation",
+          "YOLOv6",
+          "Docker",
+          "Python",
+        ],
+        details: {},
+      },
+      {
+        id: 12,
+        title: "介護施設の危険検知システム",
+        start: {
+          year: 2022,
+          month: 6,
+        },
+        end: {
+          year: 2023,
+          month: 3,
+        },
+        roles: ["IoTエンジニア", "バックエンドエンジニア"],
+        summary:
+          "複数台のカメラを使って危険を検知、管理者へ発報するシステムのエッジおよびAWS IoT開発を担当。",
+        icon: Shield,
+        tags: [
+          "IoT",
+          "AWS IoT",
+          "Python",
+          "ONVIF",
+          "スレッド処理",
+          "動体検知",
+          "Docker",
+          "cron",
+          "Ubuntu",
+        ],
+        details: {},
+      },
+      {
+        id: 13,
+        title: "業務改善・アジャイル推進",
+        start: {
+          year: 2022,
+          month: 4,
+        },
+        end: {
+          year: 2023,
+          month: 12,
+        },
+        roles: ["スクラムマスター"],
+        summary:
+          "ナレッジ管理ツールの導入（NotePM）や雑談、技術情報共有チャンネルの開設。アジャイル、ふりかえり推進。",
+        icon: Settings,
+        tags: ["Notion", "Miro", "Discord", "カンバン", "GitHub Copilot"],
+        details: {
+          background:
+            "社内の業務効率化とチームコラボレーション強化のため、各種ツール導入とアジャイル手法の推進が求められていました。",
+          solution:
+            "ナレッジ管理ツール（NotePM）の導入、Notion、Miro、Discord、カンバン、ふりかえり、朝会、GitHub Copilotのプロジェクト導入を進めました。\
+            また、認定スクラムマスター（2021年3月取得）として、アジャイル開発の推進を担当しました。",
         },
       },
     ],
