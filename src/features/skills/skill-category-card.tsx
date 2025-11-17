@@ -1,5 +1,5 @@
-import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
 import type { SkillCategory, SkillLevel } from "@/lib/models/skills.model";
 
 type Props = {
@@ -52,12 +52,17 @@ export default function SkillCategoryCard({ category }: Props) {
               className="flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 transition-colors"
             >
               <div className="flex items-center gap-3 flex-1">
-                <div className="w-2 h-2 rounded-full bg-gradient-to-r from-amber-500 to-orange-500" />
+                <div
+                  className={`w-2 h-2 rounded-full bg-gradient-to-r ${category.gradientClass}`}
+                />
                 <span className="font-medium text-gray-900">{skill.name}</span>
               </div>
               <div className="flex items-center gap-3">
                 <span className="text-sm text-gray-600">{skill.years}年</span>
-                <Badge variant="secondary" className={getLevelColor(skill.level)}>
+                <Badge
+                  variant="secondary"
+                  className={getLevelColor(skill.level)}
+                >
                   {getLevelText(skill.level)}
                 </Badge>
               </div>
