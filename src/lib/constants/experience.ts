@@ -34,7 +34,15 @@ export const EXPERIENCES: readonly ExperienceWithCompany[] = [
         roles: ["フロントエンドエンジニア"],
         summary: "AIプラットフォームへの新機能の追加や仕様変更に対応しました。",
         icon: GraduationCap,
-        tags: ["React", "TypeScript", "Tailwind CSS"],
+        tags: [
+          "React",
+          "TypeScript",
+          "Tailwind CSS",
+          "UI/UX",
+          "コードレビュー",
+          "Git",
+          "チーム開発",
+        ],
         details: {
           background:
             "以前からPOCで進めていた機能を本格的にサービスにのせることになり、\
@@ -64,7 +72,17 @@ export const EXPERIENCES: readonly ExperienceWithCompany[] = [
         summary:
           "素材プラットフォームのUX新規デザイン、再設計からフロントエンド開発まで。",
         icon: Smartphone,
-        tags: ["React", "TypeScript", "Tailwind CSS", "Miro", "Figma"],
+        tags: [
+          "React",
+          "TypeScript",
+          "Tailwind CSS",
+          "Miro",
+          "Figma",
+          "UXデザイン",
+          "ペルソナ設計",
+          "ユーザージャーニー",
+          "プロトタイピング",
+        ],
         details: {
           background:
             "既存の素材管理プロダクトは素材の管理が中心で、\
@@ -104,7 +122,15 @@ export const EXPERIENCES: readonly ExperienceWithCompany[] = [
         roles: ["バックエンドエンジニア"],
         summary: "評価根拠を示す可視化モデルのアルゴリズム検討",
         icon: Palette,
-        tags: ["Python", "AWS"],
+        tags: [
+          "Python",
+          "AWS",
+          "アルゴリズム設計",
+          "Google Colab",
+          "画像処理",
+          "パフォーマンス最適化",
+          "検証・実証実験",
+        ],
         details: {
           background:
             "可視化モデルは依然として「速度が遅い」「可視化の粒度が粗い」などの課題を抱えていました。\
@@ -140,7 +166,15 @@ export const EXPERIENCES: readonly ExperienceWithCompany[] = [
         roles: ["バックエンドエンジニア"],
         summary: "評価根拠を示す可視化アルゴリズムの再設計、仕様変更対応",
         icon: Palette,
-        tags: ["Python", "AWS"],
+        tags: [
+          "Python",
+          "AWS",
+          "リファクタリング",
+          "並列処理",
+          "システム設計",
+          "フローチャート",
+          "疎結合アーキテクチャ",
+        ],
         details: {
           background:
             "可視化モデルは「速度が遅い」「実装が様々なリポジトリに散っており、どこにあるかわかりにくい」「実装が他の関心と密結合している」といった状態になっており、将来的な不安材料がありました。\
@@ -170,7 +204,17 @@ export const EXPERIENCES: readonly ExperienceWithCompany[] = [
         summary:
           "以前からあった素材管理・分析サービスをReactで再設計、再構築するプロジェクトで、要件整理、UI設計、API設計、フロント実装やレビューを担当しました",
         icon: Smartphone,
-        tags: ["React", "TypeScript", "Tailwind CSS", "Miro", "Figma"],
+        tags: [
+          "React",
+          "TypeScript",
+          "Tailwind CSS",
+          "Miro",
+          "Figma",
+          "RESTful API",
+          "Vue2からReact移行",
+          "権限管理",
+          "要件定義",
+        ],
         details: {
           background:
             "POCで進めていた案件を本格的にサービス化するにあたり、Vue2からReactへの換装とデザインの刷新、および権限管理などのサービスとしての基本機能の必要性が出てきました。",
@@ -203,7 +247,14 @@ export const EXPERIENCES: readonly ExperienceWithCompany[] = [
         summary:
           "簡易実装を下地に、本格的な実装を担当。勉強しながらフロント実装を進め、自分なりの実装をブラッシュアップしていきました。",
         icon: Settings,
-        tags: ["React", "TypeScript"],
+        tags: [
+          "React",
+          "TypeScript",
+          "Tailwind CSS",
+          "UI/UX",
+          "継続的改善",
+          "セルフレビュー",
+        ],
         details: {
           solution:
             "前回に引き続き、勉強しながらフロント実装を担当しました。\
@@ -226,7 +277,14 @@ export const EXPERIENCES: readonly ExperienceWithCompany[] = [
         summary:
           "チャットサービス、管理者ページ、データベース登録などのページのUIをデザイン、設計、作成しました。",
         icon: MessageSquare,
-        tags: ["React", "TypeScript"],
+        tags: [
+          "React",
+          "TypeScript",
+          "Tailwind CSS",
+          "チャットUI",
+          "管理画面開発",
+          "初学者からの成長",
+        ],
         details: {
           background:
             "初めてのReactフロントエンド開発であり、最初はほとんどの実装を私が担当することになっていたので、これまでの中でも特段苦労した開発となりました。",
@@ -250,7 +308,14 @@ export const EXPERIENCES: readonly ExperienceWithCompany[] = [
         summary:
           "素材を感性評価する新しいサービスの中で、テキストや画像から感性情報をグラフ等で出力するUIの開発を行いました。",
         icon: Palette,
-        tags: ["Vue.js", "JavaScript"],
+        tags: [
+          "Vue.js",
+          "JavaScript",
+          "グラフ描画",
+          "データ可視化",
+          "画像処理",
+          "感性工学",
+        ],
         details: {},
       },
       {
@@ -268,7 +333,16 @@ export const EXPERIENCES: readonly ExperienceWithCompany[] = [
         summary:
           "感性AIが提供するコアなAPIのひとつのリファクタリングを担当しました。",
         icon: Code2,
-        tags: ["Python", "AWS", "CircleCI", "ドメイン駆動設計"],
+        tags: [
+          "Python",
+          "AWS",
+          "CircleCI",
+          "ドメイン駆動設計",
+          "AWS Lambda",
+          "リファクタリング",
+          "可読性向上",
+          "パフォーマンス最適化",
+        ],
         details: {
           background:
             "長年にわたって技術要件や機能要件が肥大化し、複雑化、低効率化していたAPIを1から再設計する必要がありました。",
