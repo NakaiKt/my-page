@@ -1,13 +1,13 @@
 import {
-  GraduationCap,
-  Palette,
-  Smartphone,
-  Settings,
-  MessageSquare,
-  Code2,
-  Camera,
-  Shield,
   Brain,
+  Camera,
+  Code2,
+  GraduationCap,
+  MessageSquare,
+  Palette,
+  Settings,
+  Shield,
+  Smartphone,
 } from "lucide-react";
 import type { Company, Experience } from "../models/experience.model";
 
@@ -364,30 +364,6 @@ export const EXPERIENCES: readonly ExperienceWithCompany[] = [
           "Ubuntu",
         ],
         details: {},
-      },
-      {
-        id: 13,
-        title: "業務改善・アジャイル推進",
-        start: {
-          year: 2022,
-          month: 4,
-        },
-        end: {
-          year: 2023,
-          month: 12,
-        },
-        roles: ["スクラムマスター"],
-        summary:
-          "ナレッジ管理ツールの導入（NotePM）や雑談、技術情報共有チャンネルの開設。アジャイル、ふりかえり推進。",
-        icon: Settings,
-        tags: ["Notion", "Miro", "Discord", "カンバン", "GitHub Copilot"],
-        details: {
-          background:
-            "社内の業務効率化とチームコラボレーション強化のため、各種ツール導入とアジャイル手法の推進が求められていました。",
-          solution:
-            "ナレッジ管理ツール（NotePM）の導入、Notion、Miro、Discord、カンバン、ふりかえり、朝会、GitHub Copilotのプロジェクト導入を進めました。\
-            また、認定スクラムマスター（2021年3月取得）として、アジャイル開発の推進を担当しました。",
-        },
       },
     ],
   },
