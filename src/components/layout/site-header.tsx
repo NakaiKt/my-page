@@ -2,6 +2,7 @@
 import { Sparkles, Menu } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 import { HEADER_NAVIGATION } from "@/lib/constants/header";
 import {
@@ -13,6 +14,7 @@ import {
 export default function SiteHeader() {
   const pathname = usePathname();
   const isActive = (href: string) => pathname === href;
+  const [open, setOpen] = useState(false);
 
   return (
     <>
@@ -66,42 +68,42 @@ export default function SiteHeader() {
       </header>
 
       {/* Mobile Hamburger Menu - Fixed bottom right */}
-      <div className="md:hidden">
-        <Popover>
-          <PopoverTrigger asChild>
-            <button
-              className="fixed bottom-6 right-6 z-[9999] w-14 h-14 rounded-full bg-gradient-to-br from-amber-500 to-orange-500 shadow-lg flex items-center justify-center hover:shadow-xl transition-all"
-              aria-label="メニュー"
-            >
-              <Menu className="w-6 h-6 text-white" />
-            </button>
-          </PopoverTrigger>
-          <PopoverContent
-            side="top"
-            align="end"
-            className="w-64 p-0 mr-6 mb-2 z-[9999]"
+      <Popover open={open} onOpenChange={setOpen}>
+        <PopoverTrigger asChild>
+          <button
+            className="md:hidden fixed bottom-6 right-6 z-[9999] w-14 h-14 rounded-full bg-gradient-to-br from-amber-500 to-orange-500 shadow-lg flex items-center justify-center hover:shadow-xl transition-all"
+            style={{ position: 'fixed' }}
+            aria-label="メニュー"
           >
-            <div className="p-4 border-b border-gray-100">
-              <h3 className="font-bold text-gray-900">メニュー</h3>
-            </div>
-            <nav className="p-3">
-              {HEADER_NAVIGATION.map((item) => (
-                <Link
-                  key={item.label}
-                  href={item.href}
-                  className={`block text-base font-medium transition-colors py-3 px-4 rounded-lg ${
-                    isActive(item.href)
-                      ? "bg-amber-50 text-amber-600 font-bold"
-                      : "text-gray-700 hover:bg-gray-50"
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
-          </PopoverContent>
-        </Popover>
-      </div>
+            <Menu className="w-6 h-6 text-white" />
+          </button>
+        </PopoverTrigger>
+        <PopoverContent
+          side="top"
+          align="end"
+          className="w-64 p-0 mr-6 mb-2"
+        >
+          <div className="p-4 border-b border-gray-100">
+            <h3 className="font-bold text-gray-900">メニュー</h3>
+          </div>
+          <nav className="p-3">
+            {HEADER_NAVIGATION.map((item) => (
+              <Link
+                key={item.label}
+                href={item.href}
+                onClick={() => setOpen(false)}
+                className={`block text-base font-medium transition-colors py-3 px-4 rounded-lg ${
+                  isActive(item.href)
+                    ? "bg-amber-50 text-amber-600 font-bold"
+                    : "text-gray-700 hover:bg-gray-50"
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+        </PopoverContent>
+      </Popover>
     </>
   );
 }
