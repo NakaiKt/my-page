@@ -183,35 +183,53 @@ export default function ProfilePage() {
                   職歴
                 </h3>
                 <div className="space-y-6">
-                  {CAREER_HISTORY.map((career, index) => (
-                    <div
-                      key={career.id}
-                      className={`flex items-start gap-4 ${
-                        index !== CAREER_HISTORY.length - 1
-                          ? "pb-6 border-b border-gray-100"
-                          : ""
-                      }`}
-                    >
-                      <div className="flex-shrink-0">
-                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center shadow-lg">
-                          <Briefcase className="w-6 h-6 text-white" />
+                  {(() => {
+                    // Group career history by company
+                    const companies: { [key: string]: { join: typeof CAREER_HISTORY[0], leave?: typeof CAREER_HISTORY[0] } } = {};
+
+                    CAREER_HISTORY.forEach((career) => {
+                      if (career.status === "入社") {
+                        companies[career.company] = { join: career };
+                      } else if (career.status === "退社") {
+                        if (companies[career.company]) {
+                          companies[career.company].leave = career;
+                        }
+                      }
+                    });
+
+                    return Object.entries(companies).map(([companyName, { join, leave }], index) => {
+                      const startDate = `${join.year}年${join.month}月`;
+                      const endDate = leave ? `${leave.year}年${leave.month}月` : "現在";
+                      const period = `${startDate} 〜 ${endDate}`;
+
+                      return (
+                        <div
+                          key={join.id}
+                          className={`flex items-start gap-4 ${
+                            index !== Object.keys(companies).length - 1
+                              ? "pb-6 border-b border-gray-100"
+                              : ""
+                          }`}
+                        >
+                          <div className="flex-shrink-0">
+                            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center shadow-lg">
+                              <Briefcase className="w-6 h-6 text-white" />
+                            </div>
+                          </div>
+                          <div className="flex-1">
+                            <div className="flex items-baseline gap-2 mb-2">
+                              <span className="font-bold text-gray-900">
+                                {period}
+                              </span>
+                            </div>
+                            <h4 className="font-medium text-gray-900">
+                              {companyName}
+                            </h4>
+                          </div>
                         </div>
-                      </div>
-                      <div className="flex-1">
-                        <div className="flex items-baseline gap-2 mb-2">
-                          <span className="font-bold text-gray-900">
-                            {career.year}年{career.month}月
-                          </span>
-                          <span className="text-sm text-gray-600">
-                            {career.status}
-                          </span>
-                        </div>
-                        <h4 className="font-medium text-gray-900">
-                          {career.company}
-                        </h4>
-                      </div>
-                    </div>
-                  ))}
+                      );
+                    });
+                  })()}
                 </div>
               </div>
             </div>
