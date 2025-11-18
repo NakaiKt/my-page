@@ -17,6 +17,14 @@ export interface EducationHistory {
   status: "入学" | "卒業" | "修了";
 }
 
+export interface CareerHistory {
+  id: number;
+  year: number;
+  month: number;
+  company: string;
+  status: "入社" | "退社";
+}
+
 export interface ProfileSection {
   icon: LucideIcon;
   title: string;
