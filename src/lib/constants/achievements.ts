@@ -1,4 +1,4 @@
-import { Globe, Code, BookOpen, Lightbulb } from "lucide-react";
+import { Globe } from "lucide-react";
 import type { Achievement } from "../models/achievements.model";
 
 export const PERSONAL_ACHIEVEMENTS: readonly Achievement[] = [
@@ -6,7 +6,7 @@ export const PERSONAL_ACHIEVEMENTS: readonly Achievement[] = [
     id: 1,
     title: "個人ポートフォリオサイト",
     description:
-      "Next.js 16.0とTailwind CSS v4を使用した個人ポートフォリオサイト。モダンなデザインシステムとアニメーション効果を実装。",
+      "Next.js 16.0とTailwind CSS v4を使用した個人ポートフォリオサイト。",
     tags: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Vercel"],
     icon: Globe,
     links: {
@@ -14,7 +14,27 @@ export const PERSONAL_ACHIEVEMENTS: readonly Achievement[] = [
     },
     period: "2025年",
   },
-  // 以下、必要に応じて個人プロジェクトを追加してください
+  {
+    id: 2,
+    title: "履歴書作成ウェブアプリ",
+    description:
+      "デザインの監督だけ行い、実装は完全に生成AIに任せた履歴書作成ウェブアプリ。生成AIをフルに活用して半日で作成しました。",
+    tags: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Vercel",
+      "claude code",
+      "gpt-5.1 codex",
+    ],
+    icon: Globe,
+    links: {
+      github: "https://github.com/NakaiKt/rirekisho",
+      page: "https://rirekisho-nakaikt.vercel.app/",
+    },
+    period: "2025年",
+  },
 ];
 
 export const OTHER_CONTRIBUTIONS: readonly Achievement[] = [
