@@ -1,11 +1,8 @@
 import type { LucideIcon } from "lucide-react";
 
-export type SkillLevel = "advanced" | "intermediate" | "beginner";
-
 export interface Skill {
   name: string;
   years: number;
-  level: SkillLevel;
 }
 
 export interface SkillCategory {
