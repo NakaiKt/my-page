@@ -1,3 +1,4 @@
+import ArrowButton from "@/components/ArrowButton";
 import { USER_INFO } from "@/lib/constants/userInfo";
 
 import SectionTitle from "@/components/SectionTitle";
@@ -7,8 +8,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { ArrowRight } from "lucide-react";
-import Link from "next/link";
 import type { SectionVisibilityProps } from "./home-section.model";
 
 export default function AboutSection({ isVisible }: SectionVisibilityProps) {
@@ -41,14 +40,9 @@ export default function AboutSection({ isVisible }: SectionVisibilityProps) {
           );
         })}
       </div>
-      <div className="mt-8 flex justify-center">
-        <Link
-          href="/experience"
-          className="group inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-amber-500 to-orange-500 px-6 py-3 text-sm font-semibold text-white shadow-md transition-all hover:shadow-lg hover:scale-105"
-        >
-          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          <span>経歴</span>
-        </Link>
+      <div className="flex justify-center gap-4">
+        <ArrowButton href="/experience" text="職務経歴" />
+        <ArrowButton href="/achievements" text="個人実績" />
       </div>
     </section>
   );

@@ -1,9 +1,7 @@
-import { USER_INFO } from "@/lib/constants/userInfo";
-
+import ArrowButton from "@/components/ArrowButton";
 import SectionTitle from "@/components/SectionTitle";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight } from "lucide-react";
-import Link from "next/link";
+import { USER_INFO } from "@/lib/constants/userInfo";
 import type { SectionVisibilityProps } from "./home-section.model";
 
 export default function SkillsSection({ isVisible }: SectionVisibilityProps) {
@@ -32,15 +30,7 @@ export default function SkillsSection({ isVisible }: SectionVisibilityProps) {
           ))}
         </div>
       </div>
-      <div className="mt-8 flex justify-center">
-        <Link
-          href="/skills"
-          className="group inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-amber-500 to-orange-500 px-6 py-3 text-sm font-semibold text-white shadow-md transition-all hover:shadow-lg hover:scale-105"
-        >
-          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          <span>スキル</span>
-        </Link>
-      </div>
+      <ArrowButton href="/skills" text="スキル" />
     </section>
   );
 }
