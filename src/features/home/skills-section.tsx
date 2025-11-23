@@ -7,7 +7,10 @@ import type { SectionVisibilityProps } from "./home-section.model";
 export default function SkillsSection({ isVisible }: SectionVisibilityProps) {
   return (
     <section id="skills" data-animate="true">
-      <SectionTitle title="Tech Stack" />
+      <SectionTitle
+        title="主要スキル・開発ツール"
+        description="個人開発含めメインで使用しているスキル・開発ツール"
+      />
       <div
         className={`relative transition-all duration-1000 ${
           isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-20"

@@ -3,6 +3,7 @@ import type { LucideIcon } from "lucide-react";
 export interface Skill {
   name: string;
   years: number;
+  isMain: boolean;
 }
 
 export interface SkillCategory {

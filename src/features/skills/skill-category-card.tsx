@@ -1,3 +1,4 @@
+import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import type { SkillCategory } from "@/lib/models/skills.model";
 
@@ -33,6 +34,13 @@ export default function SkillCategoryCard({ category }: Props) {
                   className={`w-2 h-2 rounded-full bg-gradient-to-r ${category.gradientClass}`}
                 />
                 <span className="font-medium text-gray-900">{skill.name}</span>
+                {skill.isMain && (
+                  <Badge
+                    className={`bg-gradient-to-r ${category.gradientClass}`}
+                  >
+                    メインスキル
+                  </Badge>
+                )}
               </div>
               <span className="text-sm text-gray-600">{skill.years}年</span>
             </div>

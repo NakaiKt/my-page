@@ -18,7 +18,7 @@ export const PERSONAL_ACHIEVEMENTS: readonly Achievement[] = [
     id: 2,
     title: "履歴書作成ウェブアプリ",
     description:
-      "デザインの監督だけ行い、実装は完全に生成AIに任せた履歴書作成ウェブアプリ。生成AIをフルに活用して半日で作成しました。",
+      "デザインの監督だけ行い、実装は完全に生成AIに任せた履歴書作成ウェブアプリ。「Claudeが半日でやってくれました」",
     tags: [
       "Next.js",
       "React",

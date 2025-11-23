@@ -16,8 +16,8 @@ export default function FavoritesSection({
   return (
     <section id="favorites" data-animate="true">
       <SectionTitle
-        title="Favorites"
-        description="すきなもの・大切にしていること"
+        title="趣味・好きなもの"
+        description="日常の中で楽しんでいること"
       />
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {USER_INFO.FAVORITES.map((item) => {
