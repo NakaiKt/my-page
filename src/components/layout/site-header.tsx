@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { HEADER_NAVIGATION } from "@/lib/constants/header";
+import MobileNavigation from "./mobile-navigation";
 
 export default function SiteHeader() {
   const pathname = usePathname();
@@ -20,7 +21,8 @@ export default function SiteHeader() {
             Portfolio
           </Link>
 
-          <div className="flex gap-6">
+          {/* デスクトップナビゲーション: 768px以上で表示 */}
+          <div className="hidden gap-6 md:flex">
             {HEADER_NAVIGATION.map((item) =>
               isActive(item.href) ? (
                 // アクティブな場合: リンク無効、太字、amber-500
@@ -44,6 +46,8 @@ export default function SiteHeader() {
           </div>
         </div>
       </nav>
+      {/* モバイルナビゲーション: 768px未満で右下に固定表示 */}
+      <MobileNavigation />
     </header>
   );
 }
