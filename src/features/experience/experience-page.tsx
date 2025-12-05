@@ -37,7 +37,7 @@ export default function ExperiencePage() {
       <section data-animate="true">
         <SectionTitle
           title="職務経歴"
-          description="これまでに携わってきたプロジェクトと、そこで得た経験をご紹介します"
+          description="Work Experience"
         />
         <div className="space-y-6">
           {EXPERIENCES.map((experience, index) => {

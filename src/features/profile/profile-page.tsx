@@ -6,6 +6,7 @@ import {
   Mail,
   MapPin,
   Phone,
+  Sparkles,
   User,
 } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -118,6 +119,56 @@ export default function ProfilePage() {
                   <h4 className="font-bold text-gray-900 mb-1">住所</h4>
                   <p className="text-gray-700">{BASIC_INFO.address}</p>
                 </div>
+              </div>
+            </div>
+          </Card>
+        </div>
+      </section>
+
+      {/* MBTI */}
+      <section id="mbti" data-animate>
+        <SectionTitle title="MBTI" description="Personality Type" />
+        <div
+          className={getSlideUpAnimation(
+            visibleSections.has("mbti"),
+            10,
+            "delay-100"
+          )}
+        >
+          <Card className="p-8">
+            <div className="flex items-start gap-4">
+              <div className="flex-shrink-0">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center shadow-lg">
+                  <Sparkles className="w-6 h-6 text-white" />
+                </div>
+              </div>
+              <div className="flex-1">
+                <h4 className="font-bold text-gray-900 mb-1">ENFJ-T</h4>
+                <p className="text-lg text-gray-700 mb-2">主人公 (The Protagonist)</p>
+                <p className="text-sm text-gray-600 mb-3">
+                  カリスマ性があり、人を励ます生まれついてのリーダー
+                </p>
+                <a
+                  href="https://www.16personalities.com/ja/enfj%E5%9E%8B%E3%81%AE%E6%80%A7%E6%A0%BC"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center text-sm text-indigo-600 hover:text-indigo-800 transition-colors"
+                >
+                  詳しく見る
+                  <svg
+                    className="w-4 h-4 ml-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                    />
+                  </svg>
+                </a>
               </div>
             </div>
           </Card>
