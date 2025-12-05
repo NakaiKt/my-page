@@ -20,7 +20,8 @@ export default function SiteHeader() {
             Portfolio
           </Link>
 
-          <div className="flex gap-6">
+          {/* デスクトップナビゲーション: 768px以上で表示 */}
+          <div className="hidden gap-6 md:flex">
             {HEADER_NAVIGATION.map((item) =>
               isActive(item.href) ? (
                 // アクティブな場合: リンク無効、太字、amber-500

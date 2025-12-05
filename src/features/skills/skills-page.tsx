@@ -54,8 +54,8 @@ export default function SkillsPage() {
               key={category.id}
               className={`transition-all duration-1000 delay-${index * 100} ${
                 visibleSections.has("technical-skills")
-                  ? "opacity-100 translate-x-0"
-                  : "opacity-0 translate-x-20"
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-20"
               }`}
             >
               <SkillCategoryCard category={category} />
@@ -70,8 +70,8 @@ export default function SkillsPage() {
         <div
           className={`transition-all duration-1000 ${
             visibleSections.has("certifications")
-              ? "opacity-100 translate-x-0"
-              : "opacity-0 translate-x-20"
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-20"
           }`}
         >
           <Card className="p-8">

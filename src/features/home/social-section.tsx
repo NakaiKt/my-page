@@ -29,8 +29,8 @@ export default function SocialSection({ isVisible }: SectionVisibilityProps) {
                     "size-16 group relative rounded-2xl border-2 border-gray-200 transition duration-1000 hover:scale-110 hover:shadow-2xl bg-white overflow-hidden",
                     social.hoverClass,
                     isVisible
-                      ? "opacity-100 translate-x-0"
-                      : "opacity-0 translate-x-20",
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 translate-y-20",
                   )}
                   asChild
                 >
