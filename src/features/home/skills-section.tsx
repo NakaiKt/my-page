@@ -12,7 +12,7 @@ export default function SkillsSection({ isVisible }: SectionVisibilityProps) {
       <SectionTitle title="Tech Stack" />
       <div
         className={`relative transition-all duration-1000 ${
-          isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-20"
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"
         }`}
       >
         <div className="relative flex flex-wrap justify-center gap-4 p-8">

@@ -27,8 +27,8 @@ export default function FavoritesSection({
               key={item.title}
               className={`h-full transition-all duration-1000 ${item.transitionDelayClass} ${
                 isVisible
-                  ? "opacity-100 translate-x-0"
-                  : "opacity-0 translate-x-20"
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-20"
               }`}
             >
               <CardHeader className="gap-4">
