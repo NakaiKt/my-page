@@ -1,5 +1,6 @@
 import SiteFooter from "@/components/layout/site-footer";
 import SiteHeader from "@/components/layout/site-header";
+import MobileNavigation from "@/components/layout/mobile-navigation";
 import { cn } from "@/lib/utils";
 import { getFontClasses } from "@/styles/fonts";
 import type { Metadata } from "next";
@@ -27,6 +28,8 @@ export default function RootLayout({
           <main className="container mx-auto px-4 py-12">{children}</main>
         </div>
         <SiteFooter />
+        {/* モバイルナビゲーション: 768px未満で右下に固定表示 */}
+        <MobileNavigation />
       </body>
     </html>
   );
