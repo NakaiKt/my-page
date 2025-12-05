@@ -64,7 +64,7 @@ export default function SiteHeader() {
             aria-label={menuOpen ? "メニューを閉じる" : "メニューを開く"}
             aria-expanded={menuOpen}
             size="icon-lg"
-            className="md:hidden fixed bottom-4 right-4 shadow-lg"
+            className="md:hidden fixed bottom-4 right-4 z-50 shadow-lg"
           >
             {menuOpen ? (
               <X className="h-5 w-5" aria-hidden />
@@ -76,7 +76,7 @@ export default function SiteHeader() {
         <PopoverContent
           side="top"
           align="end"
-          sideOffset={12}
+          sideOffset={14}
           className="md:hidden w-56 space-y-3 bg-white/95 backdrop-blur-sm"
         >
           <nav className="flex flex-col gap-2">
