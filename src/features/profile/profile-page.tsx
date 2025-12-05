@@ -17,6 +17,7 @@ import {
   CAREER_HISTORY,
   EDUCATION_HISTORY,
 } from "@/lib/constants/profile";
+import { getSlideUpAnimation } from "@/lib/utils";
 
 export default function ProfilePage() {
   const [visibleSections, setVisibleSections] = useState<Set<string>>(
@@ -56,11 +57,7 @@ export default function ProfilePage() {
       <section id="basic-info" data-animate>
         <SectionTitle title="基本情報" description="Basic Information" />
         <div
-          className={`transition-all duration-1000 ${
-            visibleSections.has("basic-info")
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-10"
-          }`}
+          className={getSlideUpAnimation(visibleSections.has("basic-info"), 10)}
         >
           <Card className="p-8">
             <div className="space-y-6">
@@ -131,11 +128,11 @@ export default function ProfilePage() {
       <section id="career" data-animate>
         <SectionTitle title="経歴" description="Career History" />
         <div
-          className={`transition-all duration-1000 delay-200 ${
-            visibleSections.has("career")
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-10"
-          }`}
+          className={getSlideUpAnimation(
+            visibleSections.has("career"),
+            10,
+            "delay-200"
+          )}
         >
           <Card className="p-8">
             <div className="space-y-8">

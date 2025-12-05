@@ -2,6 +2,7 @@ import ArrowButton from "@/components/ArrowButton";
 import SectionTitle from "@/components/SectionTitle";
 import { Badge } from "@/components/ui/badge";
 import { USER_INFO } from "@/lib/constants/userInfo";
+import { getSlideUpAnimation } from "@/lib/utils";
 import type { SectionVisibilityProps } from "./home-section.model";
 
 export default function SkillsSection({ isVisible }: SectionVisibilityProps) {
@@ -11,11 +12,7 @@ export default function SkillsSection({ isVisible }: SectionVisibilityProps) {
         title="主要スキル・開発ツール"
         description="個人開発含めメインで使用しているスキル・開発ツール"
       />
-      <div
-        className={`relative transition-all duration-1000 ${
-          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"
-        }`}
-      >
+      <div className={`relative ${getSlideUpAnimation(isVisible)}`}>
         <div className="relative flex flex-wrap justify-center gap-4 p-8">
           {USER_INFO.SKILL_BADGES.map((skill) => (
             <Badge

@@ -8,6 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { getSlideUpAnimation } from "@/lib/utils";
 import type { SectionVisibilityProps } from "./home-section.model";
 
 export default function FavoritesSection({
@@ -25,11 +26,7 @@ export default function FavoritesSection({
           return (
             <Card
               key={item.title}
-              className={`h-full transition-all duration-1000 ${item.transitionDelayClass} ${
-                isVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-20"
-              }`}
+              className={`h-full ${getSlideUpAnimation(isVisible, 20, item.transitionDelayClass)}`}
             >
               <CardHeader className="gap-4">
                 <div className="text-5xl" aria-hidden>
