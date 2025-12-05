@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn, getSlideUpAnimation } from "@/lib/utils";
 
 import type { VisionContent } from "@/lib/models/userInfo.model";
 
@@ -10,11 +10,7 @@ type Props = {
 export default function VisionSection({ vision, isVisible }: Props) {
   return (
     <section id="vision" data-animate="true">
-      <div
-        className={`relative transition-all duration-1000 ${
-          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"
-        }`}
-      >
+      <div className={`relative ${getSlideUpAnimation(isVisible)}`}>
         <div
           className={cn(
             "relative rounded-3xl p-12",

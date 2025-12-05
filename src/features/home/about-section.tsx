@@ -8,6 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { getSlideUpAnimation } from "@/lib/utils";
 import type { SectionVisibilityProps } from "./home-section.model";
 
 export default function AboutSection({ isVisible }: SectionVisibilityProps) {
@@ -21,11 +22,7 @@ export default function AboutSection({ isVisible }: SectionVisibilityProps) {
           return (
             <Card
               key={feature.title}
-              className={`h-full transition-all duration-1000 ${feature.transitionDelayClass} ${
-                isVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-20"
-              }`}
+              className={`h-full ${getSlideUpAnimation(isVisible, 20, feature.transitionDelayClass)}`}
             >
               <CardHeader className="gap-4">
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-amber-500 to-orange-500 text-white shadow-lg">

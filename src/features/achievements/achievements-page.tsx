@@ -11,6 +11,7 @@ import {
   OTHER_CONTRIBUTIONS,
   PERSONAL_ACHIEVEMENTS,
 } from "@/lib/constants/achievements";
+import { getSlideUpAnimation } from "@/lib/utils";
 
 export default function AchievementsPage() {
   const [visibleSections, setVisibleSections] = useState<Set<string>>(
@@ -53,11 +54,10 @@ export default function AchievementsPage() {
           description="Personal Projects"
         />
         <div
-          className={`transition-all duration-1000 ${
-            visibleSections.has("personal-projects")
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-10"
-          }`}
+          className={getSlideUpAnimation(
+            visibleSections.has("personal-projects"),
+            10
+          )}
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {PERSONAL_ACHIEVEMENTS.length > 0 ? (
@@ -165,11 +165,11 @@ export default function AchievementsPage() {
             description="Other Contributions"
           />
           <div
-            className={`transition-all duration-1000 delay-200 ${
-              visibleSections.has("other-contributions")
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-10"
-            }`}
+            className={getSlideUpAnimation(
+              visibleSections.has("other-contributions"),
+              10,
+              "delay-200"
+            )}
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {OTHER_CONTRIBUTIONS.map((contribution, index) => (

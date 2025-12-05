@@ -7,7 +7,7 @@ import { USER_INFO } from "@/lib/constants/userInfo";
 
 import SectionTitle from "@/components/SectionTitle";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { cn, getSlideUpAnimation } from "@/lib/utils";
 import type { SectionVisibilityProps } from "./home-section.model";
 
 export default function SocialSection({ isVisible }: SectionVisibilityProps) {
@@ -28,9 +28,7 @@ export default function SocialSection({ isVisible }: SectionVisibilityProps) {
                   className={cn(
                     "size-16 group relative rounded-2xl border-2 border-gray-200 transition duration-1000 hover:scale-110 hover:shadow-2xl bg-white overflow-hidden",
                     social.hoverClass,
-                    isVisible
-                      ? "opacity-100 translate-y-0"
-                      : "opacity-0 translate-y-20",
+                    getSlideUpAnimation(isVisible),
                   )}
                   asChild
                 >

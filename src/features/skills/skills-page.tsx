@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import SectionTitle from "@/components/SectionTitle";
 import { Card } from "@/components/ui/card";
 import { CERTIFICATIONS, SKILL_CATEGORIES } from "@/lib/constants/skills";
+import { getSlideUpAnimation } from "@/lib/utils";
 import SkillCategoryCard from "./skill-category-card";
 
 export default function SkillsPage() {
@@ -52,11 +53,11 @@ export default function SkillsPage() {
           {SKILL_CATEGORIES.map((category, index) => (
             <div
               key={category.id}
-              className={`transition-all duration-1000 delay-${index * 100} ${
-                visibleSections.has("technical-skills")
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-20"
-              }`}
+              className={getSlideUpAnimation(
+                visibleSections.has("technical-skills"),
+                20,
+                `delay-${index * 100}`
+              )}
             >
               <SkillCategoryCard category={category} />
             </div>
@@ -68,11 +69,9 @@ export default function SkillsPage() {
       <section id="certifications" data-animate>
         <SectionTitle title="Certifications" description="資格・認定" />
         <div
-          className={`transition-all duration-1000 ${
+          className={getSlideUpAnimation(
             visibleSections.has("certifications")
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-20"
-          }`}
+          )}
         >
           <Card className="p-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

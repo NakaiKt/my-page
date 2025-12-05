@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn, getSlideUpAnimation } from "@/lib/utils";
 import { Briefcase, Calendar, Code, TrendingUp, Users } from "lucide-react";
 
 import {
@@ -81,13 +81,7 @@ export default function ExperienceCard({
   );
 
   return (
-    <Card
-      className={cn(
-        "transition-all duration-1000",
-        transitionDelay,
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"
-      )}
-    >
+    <Card className={cn(getSlideUpAnimation(isVisible, 20, transitionDelay))}>
       {hasDetails ? (
         <Accordion type="single" collapsible>
           <AccordionItem
