@@ -1,13 +1,12 @@
 import {
+  BotMessageSquare,
+  Boxes,
   Brain,
   Camera,
+  ChartBar,
   Code2,
-  GraduationCap,
   MessageSquare,
-  Palette,
-  Settings,
   Shield,
-  Smartphone,
 } from "lucide-react";
 import type { Company, Experience } from "../models/experience.model";
 
@@ -17,11 +16,66 @@ type ExperienceWithCompany = Company & {
 
 export const EXPERIENCES: readonly ExperienceWithCompany[] = [
   {
-    id: 1,
+    id: 2,
     name: "感性AI株式会社",
     experiences: [
       {
-        id: 1,
+        id: 14,
+        title: "AIプラットフォームの機能追加",
+        start: {
+          year: 2025,
+          month: 12,
+        },
+        end: null,
+        roles: ["バックエンドエンジニア", "データベースエンジニア"],
+        projectScale: "7人（うちバックエンド5人）",
+        summary: "AIプラットフォームへの新機能の追加や仕様変更に対応しました。",
+        icon: BotMessageSquare,
+        tags: ["Node.js", "PostgreSQL"],
+        details: {},
+      },
+      {
+        id: 13,
+        title: "素材管理・分析サービスのフロントエンド開発",
+        start: {
+          year: 2025,
+          month: 10,
+        },
+        end: {
+          year: 2025,
+          month: 12,
+        },
+        roles: ["フロントエンドエンジニア"],
+        projectScale: "6人（うちフロントエンド2人）",
+        summary:
+          "素材管理・分析サービスの機能追加、および仕様変更やそれにともなうUIの変更やAPI設計を担当しました。",
+        icon: Boxes,
+        tags: [
+          "React",
+          "TypeScript",
+          "Tailwind CSS",
+          "Miro",
+          "UIデザイン",
+          "プロトタイピング",
+          "API設計",
+        ],
+        details: {
+          background:
+            "サービスがお客様に少しずつ使ってもらい始めたことで、具体的なフィードバックや個別開発の相談をいただき、\
+            その中でサービスの発展に活かせる機能を追加したり、仕様を変更したりする必要が出てきました。",
+          results:
+            "１週間程度予定からずれ込みましたが、提供予定であったサービス、および品質確保のためのリファクタリングなど、\
+            想定していたすべてのタスクを完了させました。",
+          collaboration:
+            "営業が起こした仕様を元に、さらに仕様を詰め、開発チームと共有しました。\
+            共有にはMiroやClaudeでプロトタイプを作成し、APIの仕様決定やその補助をチームで行いながら進めました。\
+            開発はある程度バックエンドと順番を合わせ、随時接続確認しながら進めました。\
+            気になったこと、誤りや伝わっているか不安になったことは即座にSlackで共有し、\
+            大きな手戻りなく開発を進めることができました。",
+        },
+      },
+      {
+        id: 12,
         title: "AIプラットフォームの機能追加",
         start: {
           year: 2025,
@@ -34,7 +88,7 @@ export const EXPERIENCES: readonly ExperienceWithCompany[] = [
         roles: ["フロントエンドエンジニア"],
         projectScale: "7人（うちフロントエンド2人）",
         summary: "AIプラットフォームへの新機能の追加や仕様変更に対応しました。",
-        icon: GraduationCap,
+        icon: BotMessageSquare,
         tags: [
           "React",
           "TypeScript",
@@ -59,7 +113,7 @@ export const EXPERIENCES: readonly ExperienceWithCompany[] = [
         },
       },
       {
-        id: 2,
+        id: 11,
         title: "素材管理・分析サービスのUXデザイン、UI開発",
         start: {
           year: 2025,
@@ -73,7 +127,7 @@ export const EXPERIENCES: readonly ExperienceWithCompany[] = [
         projectScale: "5人（うちフロントエンド2人）",
         summary:
           "素材プラットフォームのUX新規デザイン、再設計からフロントエンド開発まで。",
-        icon: Smartphone,
+        icon: Boxes,
         tags: [
           "React",
           "TypeScript",
@@ -111,7 +165,7 @@ export const EXPERIENCES: readonly ExperienceWithCompany[] = [
         },
       },
       {
-        id: 3,
+        id: 10,
         title: "分析手法の可視化モデルのアルゴリズム検討",
         start: {
           year: 2025,
@@ -124,7 +178,7 @@ export const EXPERIENCES: readonly ExperienceWithCompany[] = [
         roles: ["バックエンドエンジニア"],
         projectScale: "7人（うちバックエンド4人）",
         summary: "評価根拠を示す可視化モデルのアルゴリズム検討",
-        icon: Palette,
+        icon: ChartBar,
         tags: [
           "Python",
           "AWS",
@@ -156,7 +210,7 @@ export const EXPERIENCES: readonly ExperienceWithCompany[] = [
         },
       },
       {
-        id: 4,
+        id: 9,
         title: "分析手法の可視化モデルを構築",
         start: {
           year: 2024,
@@ -169,7 +223,7 @@ export const EXPERIENCES: readonly ExperienceWithCompany[] = [
         roles: ["バックエンドエンジニア"],
         projectScale: "7人（うちバックエンド4人）",
         summary: "評価根拠を示す可視化アルゴリズムの再設計、仕様変更対応",
-        icon: Palette,
+        icon: ChartBar,
         tags: [
           "Python",
           "AWS",
@@ -194,7 +248,7 @@ export const EXPERIENCES: readonly ExperienceWithCompany[] = [
         },
       },
       {
-        id: 5,
+        id: 8,
         title: "素材管理、分析サービスのUI構築、API設計など",
         start: {
           year: 2024,
@@ -208,7 +262,7 @@ export const EXPERIENCES: readonly ExperienceWithCompany[] = [
         projectScale: "4人（うちフロントエンド1人）",
         summary:
           "以前からあった素材管理・分析サービスをReactで再設計、再構築するプロジェクトで、要件整理、UI設計、API設計、フロント実装やレビューを担当しました",
-        icon: Smartphone,
+        icon: Boxes,
         tags: [
           "React",
           "TypeScript",
@@ -238,7 +292,7 @@ export const EXPERIENCES: readonly ExperienceWithCompany[] = [
         },
       },
       {
-        id: 6,
+        id: 7,
         title: "AIプラットフォームのUI構築",
         start: {
           year: 2024,
@@ -252,7 +306,7 @@ export const EXPERIENCES: readonly ExperienceWithCompany[] = [
         projectScale: "5人（うちフロントエンド1人）",
         summary:
           "簡易実装を下地に、本格的な実装を担当。勉強しながらフロント実装を進め、自分なりの実装をブラッシュアップしていきました。",
-        icon: Settings,
+        icon: BotMessageSquare,
         tags: [
           "React",
           "TypeScript",
@@ -269,7 +323,7 @@ export const EXPERIENCES: readonly ExperienceWithCompany[] = [
         },
       },
       {
-        id: 7,
+        id: 6,
         title: "AIチャットサービスの簡易UI構築",
         start: {
           year: 2024,
@@ -301,7 +355,7 @@ export const EXPERIENCES: readonly ExperienceWithCompany[] = [
         },
       },
       {
-        id: 8,
+        id: 5,
         title: "素材を感性評価するサービスのUI構築",
         start: {
           year: 2024,
@@ -315,7 +369,7 @@ export const EXPERIENCES: readonly ExperienceWithCompany[] = [
         projectScale: "4人（うちフロントエンド2人）",
         summary:
           "素材を感性評価する新しいサービスの中で、テキストや画像から感性情報をグラフ等で出力するUIの開発を行いました。",
-        icon: Palette,
+        icon: Boxes,
         tags: [
           "Vue.js",
           "JavaScript",
@@ -327,7 +381,7 @@ export const EXPERIENCES: readonly ExperienceWithCompany[] = [
         details: {},
       },
       {
-        id: 9,
+        id: 4,
         title: "コアAPIのリファクタリング",
         start: {
           year: 2024,
@@ -362,11 +416,11 @@ export const EXPERIENCES: readonly ExperienceWithCompany[] = [
     ],
   },
   {
-    id: 2,
+    id: 1,
     name: "株式会社NID",
     experiences: [
       {
-        id: 10,
+        id: 3,
         title: "ナレッジ検索用生成AIアシスタント",
         start: {
           year: 2023,
@@ -394,7 +448,7 @@ export const EXPERIENCES: readonly ExperienceWithCompany[] = [
         details: {},
       },
       {
-        id: 11,
+        id: 2,
         title: "混雑度検知システムの改修",
         start: {
           year: 2023,
@@ -423,7 +477,7 @@ export const EXPERIENCES: readonly ExperienceWithCompany[] = [
         details: {},
       },
       {
-        id: 12,
+        id: 1,
         title: "介護施設の危険検知システム",
         start: {
           year: 2022,
