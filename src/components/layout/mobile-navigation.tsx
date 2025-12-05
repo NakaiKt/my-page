@@ -18,7 +18,7 @@ export default function MobileNavigation() {
   const isActive = (href: string) => pathname === href;
 
   return (
-    <div className="fixed bottom-4 right-4 z-50 md:hidden">
+    <div className="fixed bottom-4 right-4 z-[100] md:hidden">
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <button
