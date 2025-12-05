@@ -47,7 +47,7 @@ export default function SkillsPage() {
       <section id="technical-skills" data-animate>
         <SectionTitle
           title="主要スキル・開発ツール"
-          description="個人開発含めた主要な技術スキルと経験年数"
+          description="Main Skills & Development Tools"
         />
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {SKILL_CATEGORIES.map((category, index) => (
