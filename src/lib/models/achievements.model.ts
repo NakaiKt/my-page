@@ -8,7 +8,7 @@ export interface Achievement {
   icon: LucideIcon;
   links?: {
     github?: string;
-    demo?: string;
+    page?: string;
     article?: string;
   };
   image?: string;

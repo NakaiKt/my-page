@@ -55,12 +55,18 @@ export default function ExperienceCard({
             <Badge
               key={role}
               variant="secondary"
-              className="bg-amber-100 text-amber-700 hover:bg-amber-100"
+              className="bg-amber-100 text-amber-700"
             >
               <Briefcase className="w-3 h-3" />
               {role}
             </Badge>
           ))}
+          {experience.projectScale && (
+            <Badge variant="secondary" className="bg-blue-100 text-blue-700">
+              <Users className="w-3 h-3" />
+              {experience.projectScale}
+            </Badge>
+          )}
         </div>
         <p className="text-sm text-gray-600 mb-4">{experience.summary}</p>
         <div className="flex flex-wrap gap-2">

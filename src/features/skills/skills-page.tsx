@@ -1,16 +1,16 @@
 "use client";
 
+import { Award } from "lucide-react";
 import { useEffect, useState } from "react";
-import { Award, TrendingUp } from "lucide-react";
 
 import SectionTitle from "@/components/SectionTitle";
 import { Card } from "@/components/ui/card";
-import { SKILL_CATEGORIES, CERTIFICATIONS } from "@/lib/constants/skills";
+import { CERTIFICATIONS, SKILL_CATEGORIES } from "@/lib/constants/skills";
 import SkillCategoryCard from "./skill-category-card";
 
 export default function SkillsPage() {
   const [visibleSections, setVisibleSections] = useState<Set<string>>(
-    new Set(),
+    new Set()
   );
 
   useEffect(() => {
@@ -30,12 +30,11 @@ export default function SkillsPage() {
           }
         });
       },
-      { threshold: 0.1 },
+      { threshold: 0.1 }
     );
 
-    const animatedElements = document.querySelectorAll<HTMLElement>(
-      "[data-animate]",
-    );
+    const animatedElements =
+      document.querySelectorAll<HTMLElement>("[data-animate]");
     animatedElements.forEach((element) => observer.observe(element));
 
     return () => observer.disconnect();
@@ -45,7 +44,10 @@ export default function SkillsPage() {
     <div className="py-20 max-w-6xl mx-auto space-y-20">
       {/* Technical Skills */}
       <section id="technical-skills" data-animate>
-        <SectionTitle title="Technical Skills" description="技術スキル" />
+        <SectionTitle
+          title="主要スキル・開発ツール"
+          description="個人開発含めた主要な技術スキルと経験年数"
+        />
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {SKILL_CATEGORIES.map((category, index) => (
             <div
@@ -92,34 +94,6 @@ export default function SkillsPage() {
                   </div>
                 </div>
               ))}
-            </div>
-          </Card>
-        </div>
-      </section>
-
-      {/* Learning */}
-      <section id="learning" data-animate>
-        <div
-          className={`transition-all duration-1000 ${
-            visibleSections.has("learning")
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-10"
-          }`}
-        >
-          <Card className="bg-gradient-to-br from-gray-900 to-gray-800 p-10 text-center relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-amber-500/20 to-orange-500/20 rounded-full blur-3xl" />
-            <div className="relative">
-              <div className="inline-flex p-4 rounded-full bg-white/10 backdrop-blur-sm mb-6">
-                <TrendingUp className="w-8 h-8 text-amber-400" />
-              </div>
-              <h3 className="text-2xl font-bold text-white mb-4">
-                継続的な学習
-              </h3>
-              <p className="text-gray-300 leading-relaxed max-w-2xl mx-auto">
-                技術の進化は早く、常に学び続ける必要があります。
-                新しいフレームワーク、デザイン手法、開発プロセスを積極的に学び、
-                プロジェクトに活かすことで、より良いプロダクト作りに貢献しています。
-              </p>
             </div>
           </Card>
         </div>

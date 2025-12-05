@@ -1,8 +1,7 @@
-import { cn } from "@/lib/utils";
-import { Zap } from "lucide-react";
-import Image from "next/image";
-
+import ArrowButton from "@/components/ArrowButton";
 import { USER_META } from "@/lib/constants/userMeta";
+import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 export default function HeroSection() {
   return (
@@ -12,7 +11,7 @@ export default function HeroSection() {
           className={cn(
             "w-40 h-40 mx-auto mb-6 rounded-full overflow-hidden",
             "bg-gradient-to-br from-amber-400 to-orange-500 shadow-2xl ring-4 ring-amber-200",
-            "flex items-center justify-center",
+            "flex items-center justify-center"
           )}
         >
           <Image
@@ -26,17 +25,14 @@ export default function HeroSection() {
         <h1
           className={cn(
             "mb-3 bg-clip-text text-transparent",
-            "bg-gradient-to-r from-amber-600 via-orange-400 to-amber-600",
+            "bg-gradient-to-r from-amber-600 via-orange-400 to-amber-600"
           )}
         >
           {USER_META.name}
         </h1>
         <h5 className="text-gray-700 mb-4">{USER_META.job}</h5>
-        <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/50 backdrop-blur-sm rounded-full border border-amber-200 text-gray-600">
-          <Zap className="w-4 h-4 text-amber-500" />
-          <span className="text-sm">@ {USER_META.company}</span>
-        </div>
       </div>
+      <ArrowButton href="/profile" text="プロフィール" />
     </section>
   );
 }

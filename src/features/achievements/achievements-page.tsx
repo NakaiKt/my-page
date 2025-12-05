@@ -1,20 +1,20 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { ExternalLink, Github } from "lucide-react";
+import { useEffect, useState } from "react";
 
 import SectionTitle from "@/components/SectionTitle";
-import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import {
-  PERSONAL_ACHIEVEMENTS,
   OTHER_CONTRIBUTIONS,
+  PERSONAL_ACHIEVEMENTS,
 } from "@/lib/constants/achievements";
 
 export default function AchievementsPage() {
   const [visibleSections, setVisibleSections] = useState<Set<string>>(
-    new Set(),
+    new Set()
   );
 
   useEffect(() => {
@@ -34,12 +34,11 @@ export default function AchievementsPage() {
           }
         });
       },
-      { threshold: 0.1 },
+      { threshold: 0.1 }
     );
 
-    const animatedElements = document.querySelectorAll<HTMLElement>(
-      "[data-animate]",
-    );
+    const animatedElements =
+      document.querySelectorAll<HTMLElement>("[data-animate]");
     animatedElements.forEach((element) => observer.observe(element));
 
     return () => observer.disconnect();
@@ -124,7 +123,7 @@ export default function AchievementsPage() {
                             </a>
                           </Button>
                         )}
-                        {achievement.links.demo && (
+                        {achievement.links.page && (
                           <Button
                             variant="outline"
                             size="sm"
@@ -132,13 +131,13 @@ export default function AchievementsPage() {
                             className="flex-1"
                           >
                             <a
-                              href={achievement.links.demo}
+                              href={achievement.links.page}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="flex items-center gap-2"
                             >
                               <ExternalLink className="w-4 h-4" />
-                              <span>Demo</span>
+                              <span>Page</span>
                             </a>
                           </Button>
                         )}
@@ -150,9 +149,7 @@ export default function AchievementsPage() {
             ) : (
               <div className="col-span-2">
                 <Card className="p-12 text-center">
-                  <p className="text-gray-500">
-                    個人プロジェクトは準備中です
-                  </p>
+                  <p className="text-gray-500">個人プロジェクトは準備中です</p>
                 </Card>
               </div>
             )}

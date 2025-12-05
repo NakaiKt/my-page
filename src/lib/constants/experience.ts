@@ -32,6 +32,7 @@ export const EXPERIENCES: readonly ExperienceWithCompany[] = [
           month: 9,
         },
         roles: ["フロントエンドエンジニア"],
+        projectScale: "7人（うちフロントエンド2人）",
         summary: "AIプラットフォームへの新機能の追加や仕様変更に対応しました。",
         icon: GraduationCap,
         tags: [
@@ -68,7 +69,8 @@ export const EXPERIENCES: readonly ExperienceWithCompany[] = [
           year: 2025,
           month: 6,
         },
-        roles: ["UXデザイナー", "フロントエンドエンジニア"],
+        roles: ["デザイナー", "フロントエンドエンジニア"],
+        projectScale: "5人（うちフロントエンド2人）",
         summary:
           "素材プラットフォームのUX新規デザイン、再設計からフロントエンド開発まで。",
         icon: Smartphone,
@@ -120,6 +122,7 @@ export const EXPERIENCES: readonly ExperienceWithCompany[] = [
           month: 2,
         },
         roles: ["バックエンドエンジニア"],
+        projectScale: "7人（うちバックエンド4人）",
         summary: "評価根拠を示す可視化モデルのアルゴリズム検討",
         icon: Palette,
         tags: [
@@ -164,6 +167,7 @@ export const EXPERIENCES: readonly ExperienceWithCompany[] = [
           month: 1,
         },
         roles: ["バックエンドエンジニア"],
+        projectScale: "7人（うちバックエンド4人）",
         summary: "評価根拠を示す可視化アルゴリズムの再設計、仕様変更対応",
         icon: Palette,
         tags: [
@@ -201,6 +205,7 @@ export const EXPERIENCES: readonly ExperienceWithCompany[] = [
           month: 11,
         },
         roles: ["フロントエンドエンジニア", "UIデザイン", "API設計"],
+        projectScale: "4人（うちフロントエンド1人）",
         summary:
           "以前からあった素材管理・分析サービスをReactで再設計、再構築するプロジェクトで、要件整理、UI設計、API設計、フロント実装やレビューを担当しました",
         icon: Smartphone,
@@ -244,6 +249,7 @@ export const EXPERIENCES: readonly ExperienceWithCompany[] = [
           month: 6,
         },
         roles: ["フロントエンドエンジニア"],
+        projectScale: "5人（うちフロントエンド1人）",
         summary:
           "簡易実装を下地に、本格的な実装を担当。勉強しながらフロント実装を進め、自分なりの実装をブラッシュアップしていきました。",
         icon: Settings,
@@ -274,6 +280,7 @@ export const EXPERIENCES: readonly ExperienceWithCompany[] = [
           month: 4,
         },
         roles: ["フロントエンドエンジニア"],
+        projectScale: "5人（うちフロントエンド1人）",
         summary:
           "チャットサービス、管理者ページ、データベース登録などのページのUIをデザイン、設計、作成しました。",
         icon: MessageSquare,
@@ -305,6 +312,7 @@ export const EXPERIENCES: readonly ExperienceWithCompany[] = [
           month: 3,
         },
         roles: ["フロントエンドエンジニア"],
+        projectScale: "4人（うちフロントエンド2人）",
         summary:
           "素材を感性評価する新しいサービスの中で、テキストや画像から感性情報をグラフ等で出力するUIの開発を行いました。",
         icon: Palette,
@@ -330,6 +338,7 @@ export const EXPERIENCES: readonly ExperienceWithCompany[] = [
           month: 2,
         },
         roles: ["バックエンドエンジニア"],
+        projectScale: "2人",
         summary:
           "感性AIが提供するコアなAPIのひとつのリファクタリングを担当しました。",
         icon: Code2,
@@ -368,6 +377,7 @@ export const EXPERIENCES: readonly ExperienceWithCompany[] = [
           month: 12,
         },
         roles: ["フルスタックエンジニア"],
+        projectScale: "3人",
         summary:
           "社内ドキュメントの検索、回答を行うAIアシスタントシステムの技術選定、サーバー及びフロント開発を担当。",
         icon: Brain,
@@ -395,6 +405,7 @@ export const EXPERIENCES: readonly ExperienceWithCompany[] = [
           month: 6,
         },
         roles: ["バックエンドエンジニア", "インフラエンジニア"],
+        projectScale: "4人（うちバックエンド2人）",
         summary:
           "カメラ画像から人数カウント、混雑度を判定するシステムの技術選定を行い、画像取得からデータベース書き込みまでのサーバーサイドを担当。",
         icon: Camera,
@@ -423,6 +434,7 @@ export const EXPERIENCES: readonly ExperienceWithCompany[] = [
           month: 3,
         },
         roles: ["IoTエンジニア", "バックエンドエンジニア"],
+        projectScale: "4人（うちバックエンド2人）",
         summary:
           "複数台のカメラを使って危険を検知、管理者へ発報するシステムのエッジおよびAWS IoT開発を担当。",
         icon: Shield,

@@ -1,19 +1,26 @@
 "use client";
 
+import {
+  Briefcase,
+  GraduationCap,
+  Mail,
+  MapPin,
+  Phone,
+  User,
+} from "lucide-react";
 import { useEffect, useState } from "react";
-import { User, Mail, Phone, MapPin, GraduationCap, Briefcase } from "lucide-react";
 
 import SectionTitle from "@/components/SectionTitle";
 import { Card } from "@/components/ui/card";
 import {
   BASIC_INFO,
-  EDUCATION_HISTORY,
   CAREER_HISTORY,
+  EDUCATION_HISTORY,
 } from "@/lib/constants/profile";
 
 export default function ProfilePage() {
   const [visibleSections, setVisibleSections] = useState<Set<string>>(
-    new Set(),
+    new Set()
   );
 
   useEffect(() => {
@@ -33,12 +40,11 @@ export default function ProfilePage() {
           }
         });
       },
-      { threshold: 0.1 },
+      { threshold: 0.1 }
     );
 
-    const animatedElements = document.querySelectorAll<HTMLElement>(
-      "[data-animate]",
-    );
+    const animatedElements =
+      document.querySelectorAll<HTMLElement>("[data-animate]");
     animatedElements.forEach((element) => observer.observe(element));
 
     return () => observer.disconnect();
@@ -67,8 +73,9 @@ export default function ProfilePage() {
                 </div>
                 <div className="flex-1">
                   <h4 className="font-bold text-gray-900 mb-1">氏名</h4>
-                  <p className="text-gray-700">{BASIC_INFO.name}</p>
-                  <p className="text-sm text-gray-500">{BASIC_INFO.nameKana}</p>
+                  <p className="text-gray-700">
+                    {BASIC_INFO.name} ({BASIC_INFO.nameKana})
+                  </p>
                 </div>
               </div>
 
@@ -185,7 +192,12 @@ export default function ProfilePage() {
                 <div className="space-y-6">
                   {(() => {
                     // Group career history by company
-                    const companies: { [key: string]: { join: typeof CAREER_HISTORY[0], leave?: typeof CAREER_HISTORY[0] } } = {};
+                    const companies: {
+                      [key: string]: {
+                        join: (typeof CAREER_HISTORY)[0];
+                        leave?: (typeof CAREER_HISTORY)[0];
+                      };
+                    } = {};
 
                     CAREER_HISTORY.forEach((career) => {
                       if (career.status === "入社") {
@@ -197,38 +209,42 @@ export default function ProfilePage() {
                       }
                     });
 
-                    return Object.entries(companies).map(([companyName, { join, leave }], index) => {
-                      const startDate = `${join.year}年${join.month}月`;
-                      const endDate = leave ? `${leave.year}年${leave.month}月` : "現在";
-                      const period = `${startDate} 〜 ${endDate}`;
+                    return Object.entries(companies).map(
+                      ([companyName, { join, leave }], index) => {
+                        const startDate = `${join.year}年${join.month}月`;
+                        const endDate = leave
+                          ? `${leave.year}年${leave.month}月`
+                          : "現在";
+                        const period = `${startDate} 〜 ${endDate}`;
 
-                      return (
-                        <div
-                          key={join.id}
-                          className={`flex items-start gap-4 ${
-                            index !== Object.keys(companies).length - 1
-                              ? "pb-6 border-b border-gray-100"
-                              : ""
-                          }`}
-                        >
-                          <div className="flex-shrink-0">
-                            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center shadow-lg">
-                              <Briefcase className="w-6 h-6 text-white" />
+                        return (
+                          <div
+                            key={join.id}
+                            className={`flex items-start gap-4 ${
+                              index !== Object.keys(companies).length - 1
+                                ? "pb-6 border-b border-gray-100"
+                                : ""
+                            }`}
+                          >
+                            <div className="flex-shrink-0">
+                              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center shadow-lg">
+                                <Briefcase className="w-6 h-6 text-white" />
+                              </div>
+                            </div>
+                            <div className="flex-1">
+                              <div className="flex items-baseline gap-2 mb-2">
+                                <span className="font-bold text-gray-900">
+                                  {period}
+                                </span>
+                              </div>
+                              <h4 className="font-medium text-gray-900">
+                                {companyName}
+                              </h4>
                             </div>
                           </div>
-                          <div className="flex-1">
-                            <div className="flex items-baseline gap-2 mb-2">
-                              <span className="font-bold text-gray-900">
-                                {period}
-                              </span>
-                            </div>
-                            <h4 className="font-medium text-gray-900">
-                              {companyName}
-                            </h4>
-                          </div>
-                        </div>
-                      );
-                    });
+                        );
+                      }
+                    );
                   })()}
                 </div>
               </div>
