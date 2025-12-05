@@ -17,9 +17,12 @@ export function getSlideUpAnimation(
   translateY: number = 20,
   delay?: string
 ): string {
+  // Use complete class names for Tailwind's static analysis
+  const translateClass = translateY === 10 ? "translate-y-10" : "translate-y-20";
+
   return cn(
     "transition-all duration-1000",
     delay,
-    isVisible ? "opacity-100 translate-y-0" : `opacity-0 translate-y-${translateY}`
+    isVisible ? "opacity-100 translate-y-0" : `opacity-0 ${translateClass}`
   )
 }
