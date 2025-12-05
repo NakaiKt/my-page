@@ -2,7 +2,7 @@
 import { Menu, Sparkles, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -16,6 +16,11 @@ export default function SiteHeader() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const isActive = (href: string) => pathname === href;
+
+  useEffect(() => {
+    // パスが変わったらメニューを閉じる（ブランドリンク等でも確実に閉じる）
+    setMenuOpen(false);
+  }, [pathname]);
 
   const renderNavItem = (href: string, label: string) =>
     isActive(href) ? (
@@ -57,6 +62,7 @@ export default function SiteHeader() {
         <PopoverTrigger asChild>
           <Button
             aria-label={menuOpen ? "メニューを閉じる" : "メニューを開く"}
+            aria-expanded={menuOpen}
             size="icon-lg"
             className="md:hidden fixed bottom-4 right-4 shadow-lg"
           >
