@@ -29,7 +29,7 @@ export const EXPERIENCES: readonly ExperienceWithCompany[] = [
         end: null,
         roles: ["バックエンドエンジニア", "データベースエンジニア"],
         projectScale: "7人（うちバックエンド5人）",
-        summary: "AIプラットフォームへの新機能の追加や仕様変更に対応しました。",
+        summary: "AIプラットフォームへの新機能の追加や仕様変更に対応中。",
         icon: BotMessageSquare,
         tags: ["Node.js", "PostgreSQL"],
         details: {},
