@@ -35,6 +35,26 @@ export const PERSONAL_ACHIEVEMENTS: readonly Achievement[] = [
     },
     period: "2025年",
   },
+  {
+    id: 3,
+    title: "開発支援ツール集",
+    description:
+      "ショートカット検索、テキスト表示、差分表示など、開発に便利なツールを集めたウェブアプリ。OS自動切り替えやインクリメンタル検索機能を搭載。",
+    tags: [
+      "React",
+      "TypeScript",
+      "Vite",
+      "Tailwind CSS",
+      "shadcn/ui",
+      "Vercel",
+    ],
+    icon: Globe,
+    links: {
+      github: "https://github.com/NakaiKt/shortcut",
+      page: "https://shortcut-livid-one.vercel.app/",
+    },
+    period: "2025年",
+  },
 ];
 
 export const OTHER_CONTRIBUTIONS: readonly Achievement[] = [
