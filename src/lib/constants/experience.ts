@@ -5,8 +5,11 @@ import {
   Camera,
   ChartBar,
   Code2,
+  GraduationCap,
+  Home,
   MessageSquare,
   Shield,
+  Store,
 } from "lucide-react";
 import type { Company, Experience } from "../models/experience.model";
 
@@ -503,6 +506,66 @@ export const EXPERIENCES: readonly ExperienceWithCompany[] = [
           "cron",
           "Ubuntu",
         ],
+        details: {},
+      },
+    ],
+  },
+  {
+    id: 3,
+    name: "アルバイト",
+    experiences: [
+      {
+        id: 15,
+        title: "塾講師",
+        start: {
+          year: 2017,
+          month: 6,
+        },
+        end: {
+          year: 2022,
+          month: 1,
+        },
+        roles: ["講師"],
+        projectScale: "個人",
+        summary: "学生時代に個別指導塾で講師として勤務。",
+        icon: GraduationCap,
+        tags: ["教育", "コミュニケーション", "学習指導"],
+        details: {},
+      },
+      {
+        id: 16,
+        title: "ゴルフショップ販売員",
+        start: {
+          year: 2017,
+          month: 4,
+        },
+        end: {
+          year: 2021,
+          month: 12,
+        },
+        roles: ["販売員"],
+        projectScale: "個人",
+        summary: "ゴルフショップにて接客・販売業務を担当。",
+        icon: Store,
+        tags: ["接客", "販売", "顧客対応"],
+        details: {},
+      },
+      {
+        id: 17,
+        title: "新生活提案",
+        start: {
+          year: 2016,
+          month: 10,
+        },
+        end: {
+          year: 2018,
+          month: 3,
+        },
+        roles: ["営業"],
+        projectScale: "個人",
+        summary: "新生活に必要な家具・家電の提案営業を担当。",
+        icon: Home,
+        tags: ["営業", "提案営業", "コミュニケーション"],
         details: {},
       },
     ],
