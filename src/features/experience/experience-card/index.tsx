@@ -61,7 +61,7 @@ export default function ExperienceCard({
               {role}
             </Badge>
           ))}
-          {experience.projectScale && (
+          {experience.projectScale !== null && (
             <Badge variant="secondary" className="bg-blue-100 text-blue-700">
               <Users className="w-3 h-3" />
               {experience.projectScale}

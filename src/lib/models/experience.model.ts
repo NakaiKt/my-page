@@ -24,7 +24,7 @@ export interface Experience {
     month: number;
   } | null;
   roles: string[];
-  projectScale: string;
+  projectScale: string | null;
   summary: string;
   icon: LucideIcon;
   tags: string[];

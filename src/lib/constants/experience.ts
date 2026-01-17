@@ -5,11 +5,11 @@ import {
   Camera,
   ChartBar,
   Code2,
-  GraduationCap,
   Home,
   MessageSquare,
   Shield,
   Store,
+  BookOpen,
 } from "lucide-react";
 import type { Company, Experience } from "../models/experience.model";
 
@@ -526,11 +526,18 @@ export const EXPERIENCES: readonly ExperienceWithCompany[] = [
           month: 1,
         },
         roles: ["講師"],
-        projectScale: "個人",
-        summary: "学生時代に個別指導塾で講師として勤務。",
-        icon: GraduationCap,
+        projectScale: null,
+        summary: "大学生、院生時に計２つの塾で講師を担当。担当は小中学生には国語、算数（数学）、理科、社会、高校生には現代文、古文、数学、地理、物理を担当しました。",
+        icon: BookOpen,
         tags: ["教育", "コミュニケーション", "学習指導"],
-        details: {},
+        details: {
+          background:"大学生になってから勉強の面白さを実感しました。しかしわたしはこれまであまり授業を真面目に受けてこなかったので、高校の勉強が全くできていませんでした。\
+            そのため、「勉強するなら人に教える立場になるのが一番早い」とおもい、塾講師になりました",
+          solution: "既存の授業の形にとらわれず、生徒の興味に従いながら柔軟に教科や単元を変えていったり、生徒と一緒に計画を立てたりしながら、生徒自身が自分で勉強を進められるように尽力してきました。\
+            また生徒自身に授業を担当させたり、互いに教え合わせたりなど、理解度の向上にも努めました。",
+          results: "生徒や塾長などの推薦もあり、教室内で数学・理科のセレクト講師（その単元の中心的な担当講師）になることができました。\
+            そのため、成績の大きな飛躍が必要な子、難関に挑戦する子、能力的に難しい子など様々な生徒を担当することができました。",
+        },
       },
       {
         id: 16,
@@ -544,8 +551,8 @@ export const EXPERIENCES: readonly ExperienceWithCompany[] = [
           month: 12,
         },
         roles: ["販売員"],
-        projectScale: "個人",
-        summary: "ゴルフショップにて接客・販売業務を担当。",
+        projectScale: null,
+        summary: "ゴルフショップにて接客・販売業務。シューズ販売を中心にクラブ、ウェアの販売を担当していました。",
         icon: Store,
         tags: ["接客", "販売", "顧客対応"],
         details: {},
@@ -562,8 +569,8 @@ export const EXPERIENCES: readonly ExperienceWithCompany[] = [
           month: 3,
         },
         roles: ["営業"],
-        projectScale: "個人",
-        summary: "新生活に必要な家具・家電の提案営業を担当。",
+        projectScale: null,
+        summary: "新入生に対して物件の紹介、相談対応、販売チームのサポートなどを担当しました。",
         icon: Home,
         tags: ["営業", "提案営業", "コミュニケーション"],
         details: {},
