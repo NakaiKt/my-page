@@ -32,10 +32,17 @@ export const EXPERIENCES: readonly ExperienceWithCompany[] = [
         end: null,
         roles: ["バックエンドエンジニア", "データベースエンジニア"],
         projectScale: "7人（うちバックエンド5人）",
-        summary: "AIプラットフォームへの新機能の追加や仕様変更に対応中。",
+        summary: "AIプラットフォームへの新機能の追加や仕様変更に対応。初めてDB込みのバックエンド開発に従事しました。",
         icon: BotMessageSquare,
-        tags: ["Node.js", "PostgreSQL"],
-        details: {},
+        tags: ["Node.js", "PostgreSQL", "DBeaver", "jest"],
+        details: {
+          results: 
+            "SQLとNode.jsのキャッチアップから始まり、20以上のAPIを開発しました。またDBの知見も得られ、APIの設計でバックエンドとDBが具体的にどのように組まれるかのイメージもでき、\
+            ER図も以前より親しみを持って接することができるようになったため、以前よりも良いAPI設計ができる自信がつきました。",
+          collaboration:
+            "積極的に自分からAPI実装の割り当てを取りに行き、より多くのAPI開発を行い、バックエンド開発スケジュールを大幅に短縮させることに貢献しました。\
+            またわからないことがあっても時間と調査範囲の区切りをつけ、チャットや通話を積極的に行いました。",
+        },
       },
       {
         id: 13,
