@@ -73,5 +73,5 @@ export const SKILL_CATEGORIES: readonly SkillCategory[] = [
 ];
 
 export const CERTIFICATIONS: readonly Certification[] = [
-  { name: "認定スクラムマスター", date: "2021年3月" },
+  { name: "認定スクラムマスター", date: "2023年3月" },
 ];
