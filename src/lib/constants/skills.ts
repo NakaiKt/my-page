@@ -11,7 +11,7 @@ export const SKILL_CATEGORIES: readonly SkillCategory[] = [
       { name: "Python", years: 5, isMain: true },
       { name: "TypeScript", years: 2, isMain: true },
       { name: "Next.js", years: 2, isMain: true },
-      { name: "React", year: 2, isMain: true },
+      { name: "React", years: 2, isMain: true },
       { name: "Tailwind CSS", years: 2, isMain: true },
       { name: "Vue.js", years: 1, isMain: false },
       { name: "Node.js", years: 1, isMain: false },
