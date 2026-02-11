@@ -34,7 +34,7 @@ export const SKILL_CATEGORIES: readonly SkillCategory[] = [
       { name: "GitHub Actions", years: 2, isMain: false },
       { name: "vercel", years: 1, isMain: false },
       { name: "Terraform", years: 1, isMain: false },
-      { name: "PosgreSQL", years: 1, ismain: false },
+      { name: "PosgreSQL", years: 1, isMain: false },
     ],
   },
   {
