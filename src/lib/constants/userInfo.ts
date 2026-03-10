@@ -18,6 +18,8 @@ import type {
   SocialLink,
   VisionContent,
 } from "../models/userInfo.model";
+import BlueskyIcon from "@/components/icons/bluesky-icon";
+import NoteIcon from "@/components/icons/note-icon";
 
 const VISION: VisionContent = {
   headline:
@@ -160,6 +162,18 @@ export const SOCIAL_LINKS: readonly SocialLink[] = [
     href: "https://github.com/NakaiKt",
     label: "GitHub",
     hoverClass: "hover:bg-gray-900",
+  },
+  {
+    icon: BlueskyIcon,
+    href: "https://bsky.app/profile/katsuhironakai.bsky.social",
+    label: "Bluesky",
+    hoverClass: "hover:bg-sky-500",
+  },
+  {
+    icon: NoteIcon,
+    href: "https://note.com/k_nakai_ks",
+    label: "note",
+    hoverClass: "hover:bg-emerald-600",
   },
   {
     icon: MessageCircle,
