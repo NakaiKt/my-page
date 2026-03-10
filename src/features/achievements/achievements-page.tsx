@@ -4,11 +4,13 @@ import { useEffect, useState } from "react";
 
 import PersonalProjectsSection from "./personal-projects-section";
 import PublicationsSection from "./publications-section";
+import RelatedLinksSection from "./related-links-section";
 
-type AchievementSectionId = "personal-projects" | "publications";
+type AchievementSectionId = "personal-projects" | "related-links" | "publications";
 
 const ACHIEVEMENT_SECTION_IDS: readonly AchievementSectionId[] = [
   "personal-projects",
+  "related-links",
   "publications",
 ] as const;
 
@@ -67,6 +69,7 @@ export default function AchievementsPage() {
       <PersonalProjectsSection
         isVisible={isSectionVisible("personal-projects")}
       />
+      <RelatedLinksSection isVisible={isSectionVisible("related-links")} />
       <PublicationsSection isVisible={isSectionVisible("publications")} />
     </div>
   );

@@ -10,7 +10,6 @@ export const HOME_SECTION_IDS: readonly HomeSectionId[] = [
   "about",
   "favorites",
   "skills",
-  "social",
-] 
+]
 
 

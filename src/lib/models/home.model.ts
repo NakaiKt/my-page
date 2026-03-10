@@ -2,8 +2,7 @@ export type HomeSectionId =
   | "vision"
   | "about"
   | "favorites"
-  | "skills"
-  | "social";
+  | "skills";
 
 export interface HomeProfile {
   readonly name: string;
