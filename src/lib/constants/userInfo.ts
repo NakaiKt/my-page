@@ -156,7 +156,7 @@ export const SKILL_BADGES: readonly SkillBadge[] = [
   },
 ];
 
-export const SOCIAL_LINKS: readonly SocialLink[] = [
+export const RELATED_LINKS: readonly SocialLink[] = [
   {
     icon: Github,
     href: "https://github.com/NakaiKt",
@@ -164,16 +164,19 @@ export const SOCIAL_LINKS: readonly SocialLink[] = [
     hoverClass: "hover:bg-gray-900",
   },
   {
-    icon: BlueskyIcon,
-    href: "https://bsky.app/profile/katsuhironakai.bsky.social",
-    label: "Bluesky",
-    hoverClass: "hover:bg-sky-500",
-  },
-  {
     icon: NoteIcon,
     href: "https://note.com/k_nakai_ks",
     label: "note",
     hoverClass: "hover:bg-emerald-600",
+  },
+];
+
+export const CONTACT_LINKS: readonly SocialLink[] = [
+  {
+    icon: BlueskyIcon,
+    href: "https://bsky.app/profile/katsuhironakai.bsky.social",
+    label: "Bluesky",
+    hoverClass: "hover:bg-sky-500",
   },
   {
     icon: MessageCircle,
@@ -188,5 +191,6 @@ export const USER_INFO = {
   ABOUT_FEATURES,
   FAVORITES,
   SKILL_BADGES,
-  SOCIAL_LINKS,
+  RELATED_LINKS,
+  CONTACT_LINKS,
 };

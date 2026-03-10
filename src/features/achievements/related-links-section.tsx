@@ -8,21 +8,25 @@ import { USER_INFO } from "@/lib/constants/userInfo";
 import SectionTitle from "@/components/SectionTitle";
 import { Button } from "@/components/ui/button";
 import { cn, getSlideUpAnimation } from "@/lib/utils";
-import type { SectionVisibilityProps } from "./home-section.model";
 
-export default function SocialSection({ isVisible }: SectionVisibilityProps) {
+interface RelatedLinksSectionProps {
+  isVisible: boolean;
+}
+
+export default function RelatedLinksSection({
+  isVisible,
+}: RelatedLinksSectionProps) {
   return (
-    <section id="social" data-animate="true">
-      <SectionTitle title="Connect" />
+    <section id="related-links" data-animate="true">
+      <SectionTitle title="関連リンク" description="Related Links" />
       <div className="flex justify-center gap-6">
-        {USER_INFO.SOCIAL_LINKS.map((social) => {
+        {USER_INFO.RELATED_LINKS.map((social) => {
           const Icon = social.icon;
 
           return (
             <Tooltip key={social.label}>
               <TooltipTrigger>
                 <Button
-                  key={social.label}
                   variant="outline"
                   size="icon"
                   className={cn(

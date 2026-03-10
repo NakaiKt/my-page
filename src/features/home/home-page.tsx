@@ -7,7 +7,6 @@ import AboutSection from "./about-section";
 import FavoritesSection from "./favorites-section";
 import HeroSection from "./hero-section";
 import SkillsSection from "./skills-section";
-import SocialSection from "./social-section";
 import VisionSection from "./vision-section";
 
 import { HOME_SECTION_IDS } from "@/lib/constants/home";
@@ -73,7 +72,6 @@ export default function HomePage() {
         <AboutSection isVisible={isSectionVisible("about")} />
         <FavoritesSection isVisible={isSectionVisible("favorites")} />
         <SkillsSection isVisible={isSectionVisible("skills")} />
-        <SocialSection isVisible={isSectionVisible("social")} />
       </div>
     </>
   );
