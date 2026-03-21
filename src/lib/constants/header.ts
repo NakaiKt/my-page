@@ -4,6 +4,7 @@ export const HEADER_NAVIGATION = [
     { href: "/experience", label: "職務経歴" },
     { href: "/skills", label: "スキル" },
     { href: "/achievements", label: "個人実績" },
+    { href: "/blog", label: "ブログ" },
   ] as const;
   
   
