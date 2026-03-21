@@ -9,6 +9,10 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Portfolio",
   description: "個人ポートフォリオサイト",
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({
