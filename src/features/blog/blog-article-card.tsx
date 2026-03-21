@@ -76,8 +76,15 @@ export default function BlogArticleCard({ article, className }: Props) {
 
             {/* Description */}
             {article.description && (
-              <p className="text-gray-600 text-sm leading-relaxed line-clamp-2 mb-2">
-                {article.description}
+              <p className="text-gray-600 text-sm leading-relaxed mb-2">
+                {article.description.length > 80
+                  ? article.description.slice(0, 80)
+                  : article.description}
+                {article.description.length > 80 && (
+                  <span className="text-amber-500 underline underline-offset-2 decoration-amber-300 group-hover:text-amber-600 ml-0.5">
+                    ...続きを読む
+                  </span>
+                )}
               </p>
             )}
 
