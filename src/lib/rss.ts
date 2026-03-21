@@ -34,6 +34,8 @@ function parseItems(xml: string, platform: BlogPlatform): BlogArticle[] {
     const pubDate = extractTag(itemXml, "pubDate");
     const description = extractTag(itemXml, "description")
       .replace(/<[^>]*>/g, "")
+      .replace(/続きをみる|続きを見る|続きを読む/g, "")
+      .trim()
       .slice(0, 200);
     const thumbnail =
       extractEnclosureUrl(itemXml) ?? extractMediaThumbnail(itemXml);
