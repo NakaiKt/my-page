@@ -1,4 +1,4 @@
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Pin } from "lucide-react";
 
 import NoteIcon from "@/components/icons/note-icon";
 import ZennIcon from "@/components/icons/zenn-icon";
@@ -56,7 +56,7 @@ export default function BlogArticleCard({ article, className }: Props) {
 
           {/* Content */}
           <div className="flex-1 min-w-0">
-            {/* Header: platform name + date */}
+            {/* Header: platform name + date + pinned badge */}
             <div className="flex items-center gap-2 mb-1">
               <span className={cn("text-sm font-bold", platformColor)}>
                 {platformName}
@@ -67,6 +67,12 @@ export default function BlogArticleCard({ article, className }: Props) {
                   ? formatRelativeDate(article.publishedAt)
                   : ""}
               </span>
+              {article.isPinned && (
+                <span className="inline-flex items-center gap-0.5 text-xs font-medium text-amber-600 bg-amber-100 px-1.5 py-0.5 rounded-full">
+                  <Pin className="w-3 h-3" />
+                  固定
+                </span>
+              )}
             </div>
 
             {/* Title */}

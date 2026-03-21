@@ -1,4 +1,4 @@
-import { fetchRSSFeed, RSS_FEEDS } from "@/lib/rss";
+import { applyPinnedArticles, fetchRSSFeed, RSS_FEEDS } from "@/lib/rss";
 
 import BlogFeedClient from "./blog-feed-client";
 
@@ -10,7 +10,7 @@ export default async function BlogPage() {
 
   return (
     <BlogFeedClient
-      noteArticles={noteArticles}
+      noteArticles={applyPinnedArticles(noteArticles)}
       zennArticles={zennArticles}
     />
   );

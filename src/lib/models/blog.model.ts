@@ -7,4 +7,5 @@ export interface BlogArticle {
   description: string;
   thumbnail?: string;
   platform: BlogPlatform;
+  isPinned?: boolean;
 }

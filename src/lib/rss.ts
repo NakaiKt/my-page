@@ -84,3 +84,23 @@ export const RSS_FEEDS = {
   note: "https://note.com/k_nakai_ks/rss",
   zenn: "https://zenn.dev/kts_4/feed",
 } as const;
+
+/** 固定記事のタイトル（部分一致で判定、これらの記事は常にフィード最上位に表示される） */
+const PINNED_ARTICLE_TITLES: string[] = [
+  "【はじめてではないnote】自己紹介",
+];
+
+/** 記事リストに固定フラグを付与し、固定記事を最上位にソートする */
+export function applyPinnedArticles(articles: BlogArticle[]): BlogArticle[] {
+  const marked = articles.map((article) => ({
+    ...article,
+    isPinned: PINNED_ARTICLE_TITLES.some((pinned) =>
+      article.title.includes(pinned)
+    ),
+  }));
+  return marked.sort((a, b) => {
+    if (a.isPinned && !b.isPinned) return -1;
+    if (!a.isPinned && b.isPinned) return 1;
+    return 0;
+  });
+}
