@@ -20,6 +20,7 @@ import type {
 } from "../models/userInfo.model";
 import BlueskyIcon from "@/components/icons/bluesky-icon";
 import NoteIcon from "@/components/icons/note-icon";
+import ZennIcon from "@/components/icons/zenn-icon";
 
 const VISION: VisionContent = {
   headline:
@@ -168,6 +169,12 @@ export const RELATED_LINKS: readonly SocialLink[] = [
     href: "https://note.com/k_nakai_ks",
     label: "note",
     hoverClass: "hover:bg-emerald-600",
+  },
+  {
+    icon: ZennIcon,
+    href: "https://zenn.dev/kts_4",
+    label: "Zenn",
+    hoverClass: "hover:bg-blue-500",
   },
 ];
 
