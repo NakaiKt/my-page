@@ -10,6 +10,7 @@ import {
   Shield,
   Store,
   BookOpen,
+  CircleQuestionMark,
 } from "lucide-react";
 import type { Company, Experience } from "../models/experience.model";
 
@@ -23,18 +24,36 @@ export const EXPERIENCES: readonly ExperienceWithCompany[] = [
     name: "感性AI株式会社",
     experiences: [
       {
+        id: 15,
+        title: " - （秘密）",
+        start: {
+          year: 2026,
+          month: 4,
+        },
+        end: null,
+        role: ["フロントエンドエンジニア", "バックエンドエンジニア", "インフラエンジニア", "その他セキュリティやDBなど",],
+        projectScale: "3人（うち開発１人）",
+        summary: " ― ",
+        icon: CircleQuestionMark,
+        tags: ["バイブコーディング", "claude code", "github copilot CLI", "google AppScript", "AWS"],
+        details: {},
+      },
+      {
         id: 14,
         title: "AIプラットフォームの機能追加",
         start: {
           year: 2025,
           month: 12,
         },
-        end: null,
-        roles: ["バックエンドエンジニア", "データベースエンジニア"],
+        end: {
+          year: 2026,
+          month: 3,
+        },
+        roles: ["バックエンドエンジニア", "データベースエンジニア", "フロントエンドエンジニア"],
         projectScale: "7人（うちバックエンド5人）",
         summary: "AIプラットフォームへの新機能の追加や仕様変更に対応。初めてDB込みのバックエンド開発に従事しました。",
         icon: BotMessageSquare,
-        tags: ["Node.js", "PostgreSQL", "DBeaver", "jest"],
+        tags: ["Node.js", "PostgreSQL", "DBeaver", "jest", "express", "Next.js", "React"],
         details: {
           results: 
             "SQLとNode.jsのキャッチアップから始まり、20以上のAPIを開発しました。またDBの知見も得られ、APIの設計でバックエンドとDBが具体的にどのように組まれるかのイメージもでき、\
