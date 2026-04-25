@@ -10,6 +10,7 @@ import {
   Palette,
   Target,
   Tent,
+  Lightbulb,
 } from "lucide-react";
 import type {
   AboutFeature,
@@ -24,35 +25,48 @@ import ZennIcon from "@/components/icons/zenn-icon";
 
 const VISION: VisionContent = {
   headline:
-    "子どもたちが楽しんで学校に行ってほしい。\nそれができる学校であってほしい。",
+    "子どもたちが学ぶことを楽しみ、\n人と関わることを楽しみ、\nそして自由な大人に成長できる環境であってほしい。",
   description:
-    "生徒は学校に行くことが楽しい。学ぶこと、関わること、成長することに貪欲に楽しみを見出してほしい。\
-    \n親や先生はもちろん、それに関わる地域の人、事務員、企業、団体、すべての人が子供の成長に楽しみを見出してほしい。\
-    \n教育とは「人格の完成を目指し、平和で民主的な国家及び社会の形成者として必要な資質を備えた心身ともに健康な国民の育成※１」を目標とするもの。\
-    \n決して勉強だけでなく、子どもたちが楽しみを見出し、自分で未来を選択できるようになってほしいと願っています。\
-    \n\n※１：教育基本法より",
+    "子どもたちが自ら物事に興味を持ち、周囲の大人がその興味を一緒に育てていく。\n" +
+    "そんな環境と社会が、当たり前になってほしい。\n\n" +
+    
+    "学問だけでなく、人の営みへの敬愛も、\n" +
+    "子どもたちには学んでほしい。\n\n" +
+    
+    "そして「自由な大人」になること。\n" +
+    "それは、自分の内なる欲求を自分で見つけ出し、\n" +
+    "計画を立て、実行し、結果を内省できること。\n" +
+    "自分の行いに責任を持つ覚悟を持てること。\n\n" +
+    
+    "そんな自由を、すべての子どもたちが手にできる社会であってほしい。",
 };
 
 const ABOUT_FEATURES: readonly AboutFeature[] = [
   {
     icon: Code,
-    title: "フルスタック開発",
+    title: "幅広い開発経験",
     description:
-      "フロントエンド（React/TypeScript）からバックエンド（Python/AWS）まで一貫した開発が可能です。現在SQLも勉強中です。",
+      "フロントエンド（React/TypeScript）からバックエンド（Python/AWS）まで幅広い領域の開発を担当。",
     transitionDelayClass: "delay-0",
+  },
+  {
+    icon: Lightbulb,
+    title: "積極的なキャッチアップ",
+    description: "開発トレンドには常にアンテナを張り、その動向を積極的に共有します。また自己研鑽に励む習慣もあります。",
+    transitionDelayClass: "delay-100"
   },
   {
     icon: Target,
     title: "チーム作り",
     description:
-      "認定スクラムマスターとしてアジャイルマインドを推進。コードレビュー文化の導入やツール導入の説明会主催、勉強会の主催。「いい製品はいいチームから」を信条に、一人ひとりのパフォーマンスを最大限に引き出せるチーム作りを大事にします。",
+      "「いい製品はいいチームから」を信条に、アジャイルマインドで一人ひとりのパフォーマンスを最大限に引き出せるチーム作りを大事にします。",
     transitionDelayClass: "delay-200",
   },
   {
     icon: Palette,
-    title: "ユーザー中心設計",
+    title: "利益追求",
     description:
-      "ペルソナ設計からユーザージャーニー作成、プロトタイピングまで実践。お客様ヒアリングを基に0からの機能設計も経験。シンプルで使いやすいデザインでユーザー価値の最大化を目指します。",
+      "美しいコードだけではお金は稼げない。高度な技術だけでは会社は支えられない。持続可能な事業継続・ビジョン追求のために利益を生み出すプロダクト開発を目指します。",
     transitionDelayClass: "delay-300",
   },
 ];
@@ -114,6 +128,10 @@ export const SKILL_BADGES: readonly SkillBadge[] = [
   {
     name: "Tailwind CSS",
     gradientClass: "from-cyan-400 to-teal-500",
+  },
+  {
+    name: "Node.js",
+    gradientClass: "from-green-500 to-green-300"
   },
   {
     name: "AWS Lambda",
