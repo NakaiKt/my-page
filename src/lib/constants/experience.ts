@@ -31,7 +31,7 @@ export const EXPERIENCES: readonly ExperienceWithCompany[] = [
           month: 4,
         },
         end: null,
-        role: ["フロントエンドエンジニア", "バックエンドエンジニア", "インフラエンジニア", "その他セキュリティやDBなど",],
+        roles: ["フロントエンドエンジニア", "バックエンドエンジニア", "インフラエンジニア", "その他セキュリティやDBなど",],
         projectScale: "3人（うち開発１人）",
         summary: " ― ",
         icon: CircleQuestionMark,
