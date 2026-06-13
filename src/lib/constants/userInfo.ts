@@ -20,6 +20,7 @@ import type {
   VisionContent,
 } from "../models/userInfo.model";
 import BlueskyIcon from "@/components/icons/bluesky-icon";
+import XIcon from "@/components/icons/x-icon";
 import NoteIcon from "@/components/icons/note-icon";
 import ZennIcon from "@/components/icons/zenn-icon";
 
@@ -208,6 +209,12 @@ export const CONTACT_LINKS: readonly SocialLink[] = [
     href: "https://www.wantedly.com/id/katsuhiro_nakai_c",
     label: "Wantedly",
     hoverClass: "hover:bg-gray-900",
+  },
+  {
+    icon: XIcon,
+    href: "https://x.com/KatsuhiroN63579",
+    label: "X",
+    hoverClass: "hover:bg-black",
   },
 ];
 
