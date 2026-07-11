@@ -54,6 +54,24 @@ export const PERSONAL_ACHIEVEMENTS: readonly Achievement[] = [
       page: "https://shortcut-livid-one.vercel.app/",
     },
     period: "2025年",
+  },  {
+    id: 4,
+    title: "github ドキュメント管理ラッパー",
+    description:
+      "web上でgithubのリポジトリにアクセスし、Obsidianライクにドキュメントを管理できるツール。PATを使う方式でDBを使用せず、フロントのみで完結することでどこでも使えるようにしました。",
+    tags: [
+      "React",
+      "TypeScript",
+      "Vite",
+      "Tailwind CSS",
+      "Vercel",
+    ],
+    icon: Globe,
+    links: {
+      github: "https://github.com/NakaiKt/github-doc-webviewer",
+      page: "https://github-doc-webviewer-web.vercel.app/",
+    },
+    period: "2026年",
   },
 ];
 
